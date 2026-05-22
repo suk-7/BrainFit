@@ -712,6 +712,327 @@
         line-height: 1.6;
       }
 
+      /* ===== ENHANCED INTERACTIONS ===== */
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.08s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.16s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.24s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.32s;
+      }
+
+      /* Route cards — richer hover */
+      .route-card {
+        position: relative;
+        overflow: hidden;
+      }
+      .route-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(
+          135deg,
+          rgba(45, 136, 152, 0.06),
+          rgba(184, 121, 74, 0.04)
+        );
+        opacity: 0;
+        transition: opacity 0.25s;
+        pointer-events: none;
+      }
+      .route-card:hover::after {
+        opacity: 1;
+      }
+      .route-card:hover .route-title {
+        color: var(--teal-800);
+      }
+      .route-card:hover .route-tag {
+        color: var(--bronze);
+      }
+      .route-card .route-title,
+      .route-card .route-tag {
+        transition: color 0.2s;
+      }
+
+      /* Ripple on route cards */
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(45, 136, 152, 0.13);
+        transform: scale(0);
+        animation: ripple-anim 0.55s linear;
+        pointer-events: none;
+      }
+      @keyframes ripple-anim {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+
+      /* Detail cards hover */
+      .detail-card {
+        transition:
+          transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+          border-color 0.22s;
+      }
+      .detail-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px -10px rgba(14, 85, 96, 0.14);
+        border-color: var(--teal-200);
+      }
+      .detail-card.dark:hover {
+        box-shadow: 0 12px 32px -10px rgba(14, 85, 96, 0.4);
+        border-color: transparent;
+      }
+
+      /* Form card shimmer border on hover */
+      .form-card {
+        transition: box-shadow 0.3s;
+      }
+      .form-card:focus-within {
+        box-shadow:
+          0 1px 0 rgba(14, 85, 96, 0.04),
+          0 20px 56px -16px rgba(14, 85, 96, 0.16);
+      }
+
+      /* Input hover state */
+      .field input:hover,
+      .field select:hover,
+      .field textarea:hover {
+        border-color: var(--teal-200);
+      }
+
+      /* Floating label animation */
+      .field-float {
+        position: relative;
+      }
+      .field-float label {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        pointer-events: none;
+        transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+        background: transparent;
+        padding: 0 3px;
+        z-index: 1;
+      }
+      .field-float textarea ~ label {
+        top: 16px;
+        transform: none;
+      }
+      .field-float input:focus ~ label,
+      .field-float input:not(:placeholder-shown) ~ label,
+      .field-float textarea:focus ~ label,
+      .field-float textarea:not(:placeholder-shown) ~ label {
+        top: 0;
+        transform: translateY(-50%);
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--teal-700);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: #fff;
+      }
+      .field-float input,
+      .field-float textarea {
+        padding-top: 16px;
+        padding-bottom: 8px;
+      }
+      .field-float select ~ label {
+        display: none; /* selects keep static label */
+      }
+
+      /* Submit button — pulse + loading */
+      .submit-btn {
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 0.01em;
+        transition:
+          background 0.2s,
+          transform 0.12s,
+          box-shadow 0.2s;
+      }
+      .submit-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px -6px rgba(143, 90, 51, 0.45);
+      }
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+      .submit-btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08) 0%,
+          transparent 100%
+        );
+        pointer-events: none;
+      }
+
+      /* Map card hover */
+      .map-card {
+        transition: box-shadow 0.25s;
+      }
+      .map-card:hover {
+        box-shadow: 0 8px 32px -8px rgba(14, 85, 96, 0.13);
+      }
+
+      /* CTA buttons lift */
+      .btn-bronze,
+      .btn-outline {
+        transition:
+          background 0.2s,
+          transform 0.15s,
+          box-shadow 0.2s;
+      }
+      .btn-bronze:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px -6px rgba(143, 90, 51, 0.4);
+      }
+      .btn-outline:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Nav CTA lift */
+      .nav-cta {
+        transition:
+          background 0.2s,
+          transform 0.15s,
+          box-shadow 0.2s;
+      }
+      .nav-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px -4px rgba(143, 90, 51, 0.4);
+      }
+
+      /* Map directions button */
+      .map-cta {
+        transition:
+          all 0.2s,
+          transform 0.15s;
+      }
+      .map-cta:hover {
+        transform: translateY(-1px);
+      }
+      .map-cta svg {
+        transition: transform 0.2s;
+      }
+      .map-cta:hover svg {
+        transform: translateX(3px);
+      }
+
+      /* Hero eyebrow pulse dot */
+      .hero-eyebrow::before {
+        animation: dot-pulse 2s ease-in-out infinite;
+      }
+      @keyframes dot-pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.75);
+        }
+      }
+
+      /* Hours row hover */
+      .hours-row {
+        transition:
+          background 0.18s,
+          padding 0.18s;
+        border-radius: 4px;
+        padding: 3px 4px;
+      }
+      .hours-row:hover {
+        background: rgba(45, 136, 152, 0.06);
+        padding: 3px 8px;
+      }
+      .detail-card.dark .hours-row:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      /* Progress indicator on form */
+      .form-progress {
+        height: 3px;
+        background: var(--border-soft);
+        border-radius: 99px;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+      }
+      .form-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--teal-700), var(--bronze));
+        border-radius: 99px;
+        width: 0%;
+        transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      /* Checkmark success overlay */
+      .form-success {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 1rem;
+        padding: 2rem 0;
+      }
+      .form-success svg {
+        width: 52px;
+        height: 52px;
+        color: var(--teal-700);
+        animation: success-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      @keyframes success-pop {
+        from {
+          transform: scale(0.6);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .form-success h4 {
+        font-family: "DM Serif Display", serif;
+        font-size: 22px;
+        color: var(--ink);
+      }
+      .form-success p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
       /* ===== RESPONSIVE ===== */
       @media (max-width: 920px) {
         .router-grid {
@@ -807,9 +1128,9 @@
         </div>
       </a>
       <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="#">About</a>
-        <a href="#">Veterans &amp; C&amp;P</a>
+        <a href="./Home.html">Home</a>
+        <a href="./About.html">About</a>
+        <a href="./Veterans_CP.html">Veterans &amp; C&amp;P</a>
         <a href="./Ecosystem.html">Ecosystem</a>
         <a href="./Partner_and_Network.html">Provider network</a>
         <a href="./Contracting.html">Contracting</a>
@@ -845,7 +1166,7 @@
         <div class="router-grid">
           <button
             type="button"
-            class="route-card"
+            class="route-card reveal"
             data-route="federal"
             onclick="selectRoute(this)"
           >
@@ -859,7 +1180,7 @@
 
           <button
             type="button"
-            class="route-card"
+            class="route-card reveal reveal-delay-1"
             data-route="provider"
             onclick="selectRoute(this)"
           >
@@ -873,7 +1194,7 @@
 
           <button
             type="button"
-            class="route-card"
+            class="route-card reveal reveal-delay-2"
             data-route="partner"
             onclick="selectRoute(this)"
           >
@@ -887,7 +1208,7 @@
 
           <button
             type="button"
-            class="route-card"
+            class="route-card reveal reveal-delay-3"
             data-route="clinical"
             onclick="selectRoute(this)"
           >
@@ -906,50 +1227,85 @@
     <section class="contact-main" id="contact-form">
       <div class="contact-inner">
         <!-- FORM -->
-        <div class="form-card">
+        <div class="form-card reveal">
           <h3>Send us a message.</h3>
           <p class="form-sub" id="form-sub">
             Pick a path above and the form will adapt. Or send us a note here
             and we'll route it.
           </p>
 
+          <div class="form-progress">
+            <div class="form-progress-bar" id="form-progress-bar"></div>
+          </div>
+
+          <div class="form-success" id="form-success">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+            <h4>Message sent — thank you!</h4>
+            <p>We'll respond within one business day.</p>
+          </div>
+
           <form
             class="form-grid"
-            onsubmit="
-              event.preventDefault();
-              alert(
-                'Thanks — your message has been received. We\'ll respond within one business day.',
-              );
-            "
+            id="main-contact-form"
+            onsubmit="handleFormSubmit(event)"
           >
             <div class="form-row">
-              <div class="field">
-                <label>Full name</label>
-                <input type="text" required />
-              </div>
-              <div class="field">
-                <label>Organization / Role</label>
+              <div class="field field-float">
                 <input
                   type="text"
-                  placeholder="Optional — but helpful for routing"
+                  placeholder=" "
+                  required
+                  id="f-name"
+                  oninput="updateProgress()"
                 />
+                <label for="f-name">Full name</label>
+              </div>
+              <div class="field field-float">
+                <input
+                  type="text"
+                  placeholder=" "
+                  id="f-org"
+                  oninput="updateProgress()"
+                />
+                <label for="f-org">Organization / Role</label>
               </div>
             </div>
 
             <div class="form-row">
-              <div class="field">
-                <label>Email</label>
-                <input type="email" required />
+              <div class="field field-float">
+                <input
+                  type="email"
+                  placeholder=" "
+                  required
+                  id="f-email"
+                  oninput="updateProgress()"
+                />
+                <label for="f-email">Email</label>
               </div>
-              <div class="field">
-                <label>Phone</label>
-                <input type="tel" />
+              <div class="field field-float">
+                <input
+                  type="tel"
+                  placeholder=" "
+                  id="f-phone"
+                  oninput="updateProgress()"
+                />
+                <label for="f-phone">Phone</label>
               </div>
             </div>
 
             <div class="field">
               <label>I'm reaching out about</label>
-              <select id="reason-select" required>
+              <select id="reason-select" required onchange="updateProgress()">
                 <option value="" disabled selected>Select one</option>
                 <option value="federal">
                   Federal contracting or procurement
@@ -965,15 +1321,21 @@
               </select>
             </div>
 
-            <div class="field">
-              <label>How can we help?</label>
+            <div class="field field-float" style="position: relative">
               <textarea
-                placeholder="A few sentences about what you're working on or what you need from us."
+                placeholder=" "
                 required
+                id="f-message"
+                oninput="updateProgress()"
               ></textarea>
+              <label for="f-message" style="top: 16px; transform: none"
+                >How can we help?</label
+              >
             </div>
 
-            <button type="submit" class="submit-btn">Send message</button>
+            <button type="submit" class="submit-btn" id="submit-btn">
+              Send message
+            </button>
 
             <div class="form-disclaimer">
               <strong>Privacy &amp; compliance:</strong> Brain Fit is HIPAA and
@@ -985,7 +1347,7 @@
         </div>
 
         <!-- DETAILS -->
-        <div class="details">
+        <div class="details reveal reveal-delay-1">
           <!-- Primary contact card -->
           <div class="detail-card dark">
             <div class="detail-head">
@@ -1106,7 +1468,7 @@
     <!-- MAP -->
     <section class="map-section">
       <div class="map-inner">
-        <div class="map-card">
+        <div class="map-card reveal">
           <div class="map-header">
             <div class="map-header-text">
               <h3>Brain Fit · Phoenix metro</h3>
@@ -1203,7 +1565,7 @@
     </footer>
 
     <script>
-      // Audience router → form prefill
+      // ===== AUDIENCE ROUTER =====
       const routeMessages = {
         federal:
           "Procurement, contracting, and federal partnership inquiries are reviewed directly by Brain Fit leadership.",
@@ -1216,27 +1578,87 @@
       };
 
       function selectRoute(btn) {
-        // Visual selection
         document
           .querySelectorAll(".route-card")
           .forEach((c) => c.classList.remove("active"));
         btn.classList.add("active");
-
         const route = btn.dataset.route;
-
-        // Update form intro
         const sub = document.getElementById("form-sub");
         if (routeMessages[route]) sub.textContent = routeMessages[route];
-
-        // Update select
         const select = document.getElementById("reason-select");
-        if (select) select.value = route;
-
-        // Scroll to form
+        if (select) {
+          select.value = route;
+          updateProgress();
+        }
         document
           .getElementById("contact-form")
           .scrollIntoView({ behavior: "smooth", block: "start" });
       }
+
+      // ===== RIPPLE ON ROUTE CARDS =====
+      document.querySelectorAll(".route-card").forEach((card) => {
+        card.addEventListener("click", function (e) {
+          const r = document.createElement("span");
+          r.className = "ripple";
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px`;
+          this.appendChild(r);
+          setTimeout(() => r.remove(), 600);
+        });
+      });
+
+      // ===== FORM PROGRESS =====
+      function updateProgress() {
+        const fields = ["f-name", "f-email", "reason-select", "f-message"];
+        const filled = fields.filter((id) => {
+          const el = document.getElementById(id);
+          return el && el.value && el.value.trim() !== "" && el.value !== "";
+        });
+        const pct = (filled.length / fields.length) * 100;
+        const bar = document.getElementById("form-progress-bar");
+        if (bar) bar.style.width = pct + "%";
+      }
+
+      // ===== FORM SUBMIT =====
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        const btn = document.getElementById("submit-btn");
+        btn.textContent = "Sending…";
+        btn.disabled = true;
+        btn.style.opacity = "0.75";
+        setTimeout(() => {
+          const form = document.getElementById("main-contact-form");
+          const success = document.getElementById("form-success");
+          const progress = document.querySelector(".form-progress");
+          form.style.transition = "opacity 0.3s";
+          form.style.opacity = "0";
+          if (progress) {
+            progress.style.transition = "opacity 0.3s";
+            progress.style.opacity = "0";
+          }
+          setTimeout(() => {
+            form.style.display = "none";
+            if (progress) progress.style.display = "none";
+            success.style.display = "flex";
+          }, 300);
+        }, 900);
+      }
+
+      // ===== SCROLL REVEAL =====
+      const revealEls = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      revealEls.forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>

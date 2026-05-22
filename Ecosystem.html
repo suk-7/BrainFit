@@ -971,6 +971,322 @@
           flex-direction: column;
         }
       }
+
+      /* ===== ENHANCEMENTS: HOVER & INTERACTIVITY ===== */
+
+      /* Scroll-reveal base */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.08s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.16s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.24s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.32s;
+      }
+
+      /* ID band items */
+      .id-item {
+        transition: transform 0.2s ease;
+        cursor: default;
+      }
+      .id-item:hover {
+        transform: translateY(-2px);
+      }
+      .id-item:hover .id-val {
+        color: #fff;
+        text-shadow: 0 0 12px rgba(168, 212, 216, 0.5);
+      }
+
+      /* Specialty bar */
+      .spec-item {
+        transition:
+          background 0.2s,
+          transform 0.2s;
+        border-radius: 4px;
+        cursor: default;
+      }
+      .spec-item:hover {
+        background: rgba(255, 255, 255, 0.07);
+        transform: translateY(-1px);
+      }
+      .spec-item:hover .spec-name {
+        color: #fff;
+      }
+
+      /* Stat cards */
+      .stat-card {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s;
+        cursor: default;
+      }
+      .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px -6px rgba(14, 85, 96, 0.15);
+        background: #e6eff1;
+      }
+      .stat-card:hover .stat-num {
+        color: var(--navy-dark);
+      }
+
+      /* Leader cards */
+      .leader-card {
+        padding: 1.5rem;
+        border: 1px solid transparent;
+        border-radius: var(--radius);
+        transition:
+          border-color 0.25s,
+          box-shadow 0.25s,
+          background 0.25s;
+      }
+      .leader-card:hover {
+        border-color: var(--blue-100);
+        box-shadow: 0 8px 28px -8px rgba(14, 85, 96, 0.12);
+        background: #fafefe;
+      }
+      .leader-photo {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s;
+      }
+      .leader-card:hover .leader-photo {
+        transform: scale(1.02);
+        box-shadow: 0 6px 20px -4px rgba(14, 85, 96, 0.12);
+      }
+
+      /* Flow boxes */
+      .flow-box {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s;
+        cursor: default;
+      }
+      .flow-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px -6px rgba(14, 85, 96, 0.13);
+        border-color: var(--blue-200);
+      }
+      .flow-box.highlight:hover {
+        border-color: var(--blue-600);
+      }
+
+      /* Capability cards */
+      .cap-card {
+        transition:
+          transform 0.22s ease,
+          box-shadow 0.22s ease,
+          border-top-color 0.22s;
+        cursor: default;
+      }
+      .cap-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px -8px rgba(14, 85, 96, 0.14);
+        border-top-color: var(--blue-600);
+      }
+      .cap-card:hover .cap-title {
+        color: var(--navy-dark);
+      }
+
+      /* Affiliate cards */
+      .affil-card {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .affil-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px -8px rgba(14, 85, 96, 0.15);
+      }
+      .affil-header {
+        transition: background 0.25s;
+      }
+      .affil-card:hover .affil-header {
+        background: var(--navy-dark);
+      }
+      .affil-link {
+        transition:
+          color 0.2s,
+          gap 0.2s;
+      }
+      .affil-link:hover {
+        gap: 8px;
+        color: var(--navy-dark);
+      }
+
+      /* State cards */
+      .state-card {
+        transition:
+          transform 0.18s ease,
+          background 0.18s,
+          box-shadow 0.18s,
+          color 0.18s;
+        cursor: default;
+      }
+      .state-card:hover {
+        transform: translateY(-3px) scale(1.05);
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+        box-shadow: 0 6px 16px -4px rgba(14, 85, 96, 0.25);
+      }
+
+      /* Credential cards */
+      .cred-card {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        cursor: default;
+      }
+      .cred-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px -6px rgba(14, 85, 96, 0.14);
+      }
+      .cred-card.active:hover {
+        background: #f0ead8;
+      }
+      .cred-card.pursuit:hover {
+        background: #deedf1;
+      }
+
+      /* CTA strip button */
+      .cta-strip-btn {
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-strip-btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0);
+        transition: background 0.2s;
+      }
+      .cta-strip-btn:hover::after {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      /* Submit button pulse on hover */
+      .submit-btn {
+        position: relative;
+        overflow: hidden;
+      }
+      .submit-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(45, 136, 152, 0.08);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.4s ease,
+          height 0.4s ease;
+      }
+      .submit-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      /* Nav CTA */
+      .nav-cta {
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .nav-cta:hover {
+        transform: translateY(-1px);
+      }
+
+      /* Section headers fade-up via reveal class (added by JS) */
+      .section-label,
+      .section h2 {
+        transition: color 0.2s;
+      }
+
+      /* Hero SVG mark gentle pulse */
+      @keyframes hero-pulse {
+        0%,
+        100% {
+          opacity: 0.95;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.04);
+        }
+      }
+      .hero-mark svg {
+        animation: hero-pulse 4s ease-in-out infinite;
+      }
+
+      /* Smooth underline on ecosystem-block hover */
+      .ecosystem-block {
+        transition:
+          box-shadow 0.25s,
+          border-color 0.25s;
+      }
+      .ecosystem-block:hover {
+        box-shadow: 0 8px 32px -8px rgba(14, 85, 96, 0.12);
+        border-color: var(--blue-200);
+      }
+
+      /* cred-pill hover */
+      .cred-pill {
+        transition:
+          background 0.18s,
+          color 0.18s,
+          transform 0.18s;
+        cursor: default;
+      }
+      .cred-pill:hover {
+        background: var(--blue-800);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+
+      /* loc-pill hover */
+      .loc-pill {
+        transition:
+          background 0.18s,
+          color 0.18s;
+        cursor: default;
+      }
+      .loc-pill:hover {
+        background: var(--navy);
+        color: #fff;
+      }
+
+      /* cred-badge hover */
+      .cred-badge {
+        transition: transform 0.18s;
+        cursor: default;
+      }
+      .cred-badge:hover {
+        transform: translateY(-1px);
+      }
+
+      /* Divider fade on scroll */
+      hr.divider {
+        transition: border-color 0.3s;
+      }
     </style>
   </head>
   <body>
@@ -1002,10 +1318,11 @@
         </div>
       </a>
       <div class="nav-links">
-        <a href="#about" class="active">About</a>
-        <a href="/veterans-cp/">Veterans &amp; C&amp;P</a>
-        <a href="./Ecosystem.html">Ecosystem</a>
-        <a href="./Partner_and_Network.html" class="active">Provider network</a>
+        <a href="./Home.html">Home</a>
+        <a href="./About.html">About</a>
+        <a href="./Veterans_CP.html">Veterans &amp; C&amp;P</a>
+        <a href="./Ecosystem.html" class="active">Ecosystem</a>
+        <a href="./Partner_and_Network.html">Provider network</a>
         <a href="./Contracting.html">Contracting</a>
         <a href="./Contact.html">Contact</a>
       </div>
@@ -2962,5 +3279,142 @@
         HIPAA &amp; 42 CFR Part 2 Compliant
       </div>
     </footer>
+
+    <script>
+      /* ── Scroll-reveal ── */
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              revealObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+
+      // Mark elements for reveal with staggered delays
+      function addReveal(selector, delayClass = "") {
+        document.querySelectorAll(selector).forEach((el, i) => {
+          el.classList.add("reveal");
+          if (delayClass) {
+            const d = (i % 4) + 1;
+            el.classList.add(`reveal-delay-${d}`);
+          }
+          revealObserver.observe(el);
+        });
+      }
+
+      addReveal(".stat-card", true);
+      addReveal(".cap-card", true);
+      addReveal(".affil-card", true);
+      addReveal(".state-card", true);
+      addReveal(".cred-card", true);
+      addReveal(".flow-box", true);
+      addReveal(".leader-card", true);
+      addReveal(".section h2");
+      addReveal(".section-label");
+      addReveal(".cta-strip");
+      addReveal(".ecosystem-block");
+      addReveal(".continuum-block");
+
+      /* ── Animated stat counters ── */
+      function animateCounter(el, target, duration = 1200) {
+        const isDecimal = String(target).includes(".");
+        const suffix = el.dataset.suffix || "";
+        const start = performance.now();
+        function step(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * target);
+          el.textContent = value + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              const el = e.target;
+              const raw = el.textContent.trim();
+              const num = parseFloat(raw.replace(/[^0-9.]/g, ""));
+              const suffix = raw.replace(/[0-9.]/g, "");
+              el.dataset.suffix = suffix;
+              if (!isNaN(num) && num > 0) animateCounter(el, num);
+              counterObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      document
+        .querySelectorAll(".stat-num")
+        .forEach((el) => counterObserver.observe(el));
+
+      /* ── Active nav link highlighting on scroll ── */
+      const sections = document.querySelectorAll("section[id], div[id]");
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              navLinks.forEach((a) => {
+                a.classList.remove("active");
+                if (a.getAttribute("href") === "#" + e.target.id) {
+                  a.classList.add("active");
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+
+      sections.forEach((s) => sectionObserver.observe(s));
+
+      /* ── Specialty bar: highlight dot on hover ── */
+      document.querySelectorAll(".spec-item").forEach((item) => {
+        const dot = item.querySelector(".spec-dot");
+        const origBg = dot.style.background;
+        item.addEventListener("mouseenter", () => {
+          dot.style.transform = "scale(1.6)";
+          dot.style.transition = "transform 0.2s";
+        });
+        item.addEventListener("mouseleave", () => {
+          dot.style.transform = "scale(1)";
+        });
+      });
+
+      /* ── Contact form: label animation & send feedback ── */
+      const submitBtn = document.querySelector(".submit-btn");
+      if (submitBtn) {
+        submitBtn.addEventListener("click", () => {
+          submitBtn.textContent = "Message sent ✓";
+          submitBtn.style.background = "#d1f5e3";
+          submitBtn.style.color = "#1a6b3a";
+          setTimeout(() => {
+            submitBtn.textContent = "Send message";
+            submitBtn.style.background = "";
+            submitBtn.style.color = "";
+          }, 2800);
+        });
+      }
+
+      /* ── Smooth scroll for all hash links ── */
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const target = document.querySelector(a.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1128,6 +1128,292 @@
           text-align: center;
         }
       }
+
+      /* ===== INTERACTIVE ENHANCEMENTS ===== */
+
+      /* Scroll-reveal animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+          transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Staggered children */
+      .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+          transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      .reveal-stagger.visible > *:nth-child(1) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0s;
+      }
+      .reveal-stagger.visible > *:nth-child(2) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.08s;
+      }
+      .reveal-stagger.visible > *:nth-child(3) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.16s;
+      }
+      .reveal-stagger.visible > *:nth-child(4) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.24s;
+      }
+      .reveal-stagger.visible > *:nth-child(5) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.32s;
+      }
+      .reveal-stagger.visible > *:nth-child(6) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.4s;
+      }
+      .reveal-stagger.visible > *:nth-child(n + 7) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.48s;
+      }
+
+      /* Enhanced comp-card hover */
+      .comp-card {
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s,
+          transform 0.22s;
+        cursor: default;
+      }
+      .comp-card:hover {
+        border-color: var(--teal-300);
+        box-shadow: 0 8px 28px -8px rgba(14, 85, 96, 0.14);
+        transform: translateY(-2px);
+      }
+
+      /* Enhanced network-card hover */
+      .network-card {
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s,
+          transform 0.22s;
+      }
+      .network-card:hover {
+        border-color: var(--teal-300);
+        box-shadow: 0 8px 24px -8px rgba(14, 85, 96, 0.13);
+        transform: translateY(-2px);
+      }
+      .network-card:hover .network-num {
+        color: var(--teal-700);
+        transition: color 0.22s;
+      }
+
+      /* Enhanced pop-card hover */
+      .pop-card {
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s,
+          transform 0.22s,
+          background 0.22s;
+      }
+      .pop-card:hover {
+        border-color: var(--teal-200);
+        background: var(--teal-50);
+        box-shadow: 0 4px 16px -6px rgba(14, 85, 96, 0.1);
+        transform: translateY(-1px);
+      }
+
+      /* Enhanced geo-state hover */
+      .geo-state {
+        transition:
+          border-color 0.18s,
+          background 0.18s,
+          color 0.18s,
+          transform 0.18s;
+        cursor: default;
+      }
+      .geo-state:hover {
+        border-color: var(--teal-300);
+        background: var(--teal-50);
+        color: var(--teal-800);
+        transform: translateY(-1px);
+      }
+
+      /* Enhanced naics-pill hover */
+      .naics-pill {
+        transition:
+          background 0.18s,
+          border-color 0.18s,
+          color 0.18s,
+          transform 0.18s;
+        cursor: default;
+      }
+      .naics-pill:hover {
+        background: var(--teal-100);
+        border-color: var(--teal-300);
+        color: var(--teal-900);
+        transform: translateY(-1px);
+      }
+
+      /* Enhanced id-row hover */
+      .id-row {
+        transition: background 0.15s;
+        border-radius: 4px;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+      .id-row:hover {
+        background: var(--teal-50);
+      }
+
+      /* Enhanced leader-card hover */
+      .leader-card {
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s,
+          transform 0.22s;
+      }
+      .leader-card:hover {
+        border-color: var(--teal-200);
+        box-shadow: 0 16px 48px -16px rgba(14, 85, 96, 0.18);
+        transform: translateY(-3px);
+      }
+
+      /* Enhanced eco-card hover */
+      .eco-card {
+        transition:
+          box-shadow 0.22s,
+          transform 0.22s,
+          border-color 0.22s;
+      }
+      .eco-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 36px -10px rgba(14, 85, 96, 0.18);
+      }
+      .eco-card.primary:hover {
+        box-shadow: 0 12px 36px -10px rgba(14, 85, 96, 0.35);
+      }
+
+      /* Enhanced cont-step hover */
+      .cont-step {
+        transition: background 0.2s;
+      }
+      .cont-step:hover {
+        background: var(--teal-50) !important;
+      }
+      .cont-step:hover .cont-abbr {
+        color: var(--teal-700);
+        transition: color 0.2s;
+      }
+
+      /* pp-card hover */
+      .pp-card {
+        transition:
+          box-shadow 0.25s,
+          transform 0.25s;
+      }
+      .pp-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 56px -16px rgba(14, 85, 96, 0.18);
+      }
+
+      /* Nav link active indicator */
+      .nav-links a {
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--bronze);
+        border-radius: 2px;
+        transform: scaleX(0);
+        transition: transform 0.2s;
+      }
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        transform: scaleX(1);
+      }
+
+      /* Section heading subtle left accent on hover */
+      .section-label {
+        transition: letter-spacing 0.2s;
+      }
+      .section:hover .section-label {
+        letter-spacing: 0.2em;
+      }
+
+      /* Smooth focus ring for anchor links */
+      a:focus-visible {
+        outline: 2px solid var(--teal-500);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+
+      /* CTA buttons pulse on hover */
+      .btn-bronze,
+      .btn-outline {
+        transition:
+          background 0.2s,
+          transform 0.18s,
+          box-shadow 0.18s;
+      }
+      .btn-bronze:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px -4px rgba(143, 90, 51, 0.4);
+      }
+      .btn-outline:hover {
+        transform: translateY(-1px);
+      }
+      .nav-cta {
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .nav-cta:hover {
+        transform: translateY(-1px);
+      }
+
+      /* Hero meta items subtle highlight */
+      .hero-meta-item {
+        transition: opacity 0.2s;
+      }
+      .hero-meta:hover .hero-meta-item {
+        opacity: 0.6;
+      }
+      .hero-meta .hero-meta-item:hover {
+        opacity: 1;
+      }
+
+      /* Table row transition already present, just ensure smooth */
+      .cv-table tbody tr {
+        transition: background 0.15s;
+      }
+      .cv-table tbody tr:hover td {
+        color: var(--ink);
+      }
+
+      /* Badge subtle lift */
+      .badge {
+        transition: transform 0.15s;
+      }
+      .cv-table tbody tr:hover .badge {
+        transform: scale(1.04);
+      }
     </style>
   </head>
   <body>
@@ -1159,13 +1445,13 @@
         </div>
       </a>
       <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="#">About</a>
-        <a href="#">Veterans &amp; C&amp;P</a>
+        <a href="./Home.html">Home</a>
+        <a href="./About.html">About</a>
+        <a href="./Veterans_CP.html">Veterans &amp; C&amp;P</a>
         <a href="./Ecosystem.html">Ecosystem</a>
         <a href="./Partner_and_Network.html">Provider network</a>
         <a href="./Contracting.html" class="active">Contracting</a>
-        <a href="contact.html">Contact</a>
+        <a href="./Contact.html">Contact</a>
       </div>
       <a href="contact.html" class="nav-cta">Get in touch</a>
     </nav>
@@ -2119,5 +2405,48 @@
         HIPAA &amp; 42 CFR Part 2 Compliant
       </div>
     </footer>
+    <script>
+      // Scroll-reveal
+      const revealEls = [
+        ...document.querySelectorAll(".section h2, .section-sub"),
+        ...document.querySelectorAll(
+          ".id-card, .pp-card, .network-note, .geo-note",
+        ),
+      ];
+      const staggerEls = [
+        ...document.querySelectorAll(
+          ".diff-grid, .comp-grid, .network-grid, .ecosystem-grid, .pop-grid, .leadership-grid, .geo-grid, .naics-pills",
+        ),
+      ];
+      revealEls.forEach((el) => el.classList.add("reveal"));
+      staggerEls.forEach((el) => el.classList.add("reveal-stagger"));
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+      );
+
+      document
+        .querySelectorAll(".reveal, .reveal-stagger")
+        .forEach((el) => io.observe(el));
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (e) => {
+          const target = document.querySelector(anchor.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
