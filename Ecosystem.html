@@ -14,6 +14,8 @@
         --navy-dark: #0e5560;
         --navy-deep: #0e1f16;
         --navy-mid: #2d8898;
+        --bronze: #b8794a;
+        --bronze-light: #e5c9a8;
         --blue-50: #eff3ea;
         --blue-100: #a8d4d8;
         --blue-200: #88b8c0;
@@ -56,7 +58,7 @@
 
       /* NAV */
       .nav {
-        background: var(--navy);
+        background: #0e5560;
         padding: 0.875rem 3rem;
         display: flex;
         justify-content: space-between;
@@ -122,13 +124,41 @@
 
       /* HERO */
       .hero {
-        background: var(--navy);
+        background:
+          radial-gradient(
+            ellipse at top right,
+            rgba(184, 121, 74, 0.15),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at bottom left,
+            rgba(14, 85, 96, 0.35),
+            transparent 60%
+          ),
+          #0e5560;
         padding: 5.5rem 3rem 4.5rem;
         text-align: center;
         position: relative;
         overflow: hidden;
       }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 60px 60px;
+        pointer-events: none;
+        z-index: 0;
+      }
       .hero-mark {
+        position: relative;
+        z-index: 1;
         margin-bottom: 1.5rem;
       }
       .hero-mark svg {
@@ -137,17 +167,29 @@
         opacity: 0.95;
       }
       .hero-badge {
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--blue-100);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(184, 121, 74, 0.15);
+        border: 1px solid rgba(229, 201, 168, 0.3);
+        color: var(--bronze-light);
         font-size: 11px;
         font-weight: 500;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        padding: 6px 18px;
+        padding: 6px 16px;
         border-radius: var(--radius-pill);
-        margin-bottom: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        margin-bottom: 1.25rem;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--bronze);
+        flex-shrink: 0;
       }
       .hero h1 {
         font-family: "DM Serif Display", serif;
@@ -160,6 +202,8 @@
         margin-left: auto;
         margin-right: auto;
         letter-spacing: -0.5px;
+        position: relative;
+        z-index: 1;
       }
       .hero p {
         font-size: 16px;
@@ -167,9 +211,13 @@
         line-height: 1.75;
         max-width: 600px;
         margin: 0 auto 2rem;
+        position: relative;
+        z-index: 1;
       }
       .hero-btns {
         display: flex;
+        position: relative;
+        z-index: 1;
         gap: 12px;
         justify-content: center;
         flex-wrap: wrap;

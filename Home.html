@@ -122,7 +122,7 @@
 
       /* HERO */
       .hero {
-        background: var(--navy);
+        background: var(--navy-dark);
         padding: 5.5rem 3rem 4.5rem;
         text-align: center;
         position: relative;
@@ -1365,24 +1365,15 @@
         transform: translateY(-3px) scale(1.05);
       }
 
-      /* Toast for form */
-      .toast {
-        position: fixed;
-        bottom: 28px;
-        left: 50%;
-        transform: translateX(-50%) translateY(120%);
-        background: var(--navy-deep);
-        color: #fff;
-        padding: 14px 24px;
+      /* Inline form success state */
+      .form-success {
+        display: none;
+        background: rgba(45, 136, 152, 0.08);
+        border: 1px solid rgba(45, 136, 152, 0.25);
         border-radius: var(--radius);
-        font-size: 14px;
-        z-index: 250;
-        box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.5);
-        transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4);
-        border-left: 4px solid var(--green-border);
-      }
-      .toast.show {
-        transform: translateX(-50%) translateY(0);
+        padding: 2rem;
+        text-align: center;
+        margin-top: 1rem;
       }
     </style>
   </head>
@@ -3453,7 +3444,25 @@
           <textarea
             placeholder="Tell us a bit about how we can help..."
           ></textarea>
-          <button class="submit-btn" type="submit">Send message</button>
+          <button class="submit-btn" id="submitBtn" type="submit">
+            Send message
+          </button>
+        </div>
+        <div id="formSuccess" class="form-success">
+          <div style="font-size: 28px; margin-bottom: 0.5rem">✓</div>
+          <div
+            style="
+              font-family: &quot;DM Serif Display&quot;, serif;
+              font-size: 20px;
+              color: var(--navy-dark);
+              margin-bottom: 0.5rem;
+            "
+          >
+            Message received
+          </div>
+          <div style="font-size: 14px; color: var(--text-secondary)">
+            Thanks — we'll respond within one business day.
+          </div>
         </div>
         <div class="contact-info">
           <div>
@@ -3511,10 +3520,6 @@
     <!-- FIXED UI ELEMENTS -->
     <div class="scroll-progress" id="scrollProgress"></div>
     <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
-    <div class="toast" id="toast">
-      Thanks — we'll respond within one business day.
-    </div>
-
     <script>
       (function () {
         // ---- Scroll progress + nav shrink + back-to-top ----
@@ -3656,16 +3661,21 @@
             });
           });
 
-        // ---- Contact form -> toast (prevents page reload) ----
-        var toast = document.getElementById("toast");
-        var submit = document.querySelector(".submit-btn");
-        if (submit) {
-          submit.addEventListener("click", function (e) {
+        // ---- Contact form -> inline success ----
+        var submitBtn = document.getElementById("submitBtn");
+        if (submitBtn) {
+          submitBtn.addEventListener("click", function (e) {
             e.preventDefault();
-            toast.classList.add("show");
-            setTimeout(function () {
-              toast.classList.remove("show");
-            }, 3400);
+            var form = document.querySelector(".contact-form");
+            var success = document.getElementById("formSuccess");
+            if (form && success) {
+              form.style.transition = "opacity 0.3s";
+              form.style.opacity = "0";
+              setTimeout(function () {
+                form.style.display = "none";
+                success.style.display = "block";
+              }, 300);
+            }
           });
         }
       })();
