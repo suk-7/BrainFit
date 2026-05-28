@@ -56,7 +56,7 @@
 
       /* NAV */
       .nav {
-        background: var(--navy);
+        background: var(--navy-dark);
         padding: 0.875rem 3rem;
         display: flex;
         justify-content: space-between;
@@ -108,8 +108,8 @@
         font-weight: 500;
       }
       .nav-cta {
-        background: #fff;
-        color: var(--navy);
+        background: var(--green-600);
+        color: #fff;
         font-size: 12px;
         font-weight: 500;
         padding: 7px 18px;
@@ -117,16 +117,41 @@
         transition: background 0.2s;
       }
       .nav-cta:hover {
-        background: var(--blue-50);
+        background: var(--green-800);
       }
 
       /* HERO */
       .hero {
-        background: var(--navy-dark);
+        background:
+          radial-gradient(
+            ellipse at top right,
+            rgba(184, 121, 74, 0.1),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at bottom left,
+            rgba(45, 136, 152, 0.18),
+            transparent 60%
+          ),
+          var(--navy-dark);
         padding: 5.5rem 3rem 4.5rem;
         text-align: center;
         position: relative;
         overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 60px 60px;
+        pointer-events: none;
       }
       .hero-mark {
         margin-bottom: 1.5rem;
@@ -137,17 +162,27 @@
         opacity: 0.95;
       }
       .hero-badge {
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--blue-100);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(184, 121, 74, 0.15);
+        border: 1px solid rgba(229, 201, 168, 0.3);
+        color: #e5c9a8;
         font-size: 11px;
         font-weight: 500;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        padding: 6px 18px;
+        padding: 6px 16px;
         border-radius: var(--radius-pill);
-        margin-bottom: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        margin-bottom: 1.25rem;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green-600);
+        flex-shrink: 0;
       }
       .hero h1 {
         font-family: "DM Serif Display", serif;
@@ -207,33 +242,39 @@
 
       /* IDENTIFIER BAND */
       .id-band {
-        background: var(--navy-dark);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: #062c36;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         padding: 1.25rem 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 2.5rem;
-        flex-wrap: wrap;
+      }
+      /* reuse grid via a wrapper — handled below via HTML update */
+      .id-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 1000px;
+        margin: 0 auto;
       }
       .id-item {
         display: flex;
         flex-direction: column;
-        gap: 2px;
-        align-items: flex-start;
+        gap: 4px;
+        align-items: center;
+        text-align: center;
       }
       .id-label {
-        font-size: 9.5px;
+        font-size: 10px;
         color: #88b8c0;
         text-transform: uppercase;
         letter-spacing: 0.12em;
         font-weight: 500;
+        margin-bottom: 0;
       }
       .id-val {
-        font-size: 13px;
+        font-size: 14px;
         color: #fff;
         font-weight: 500;
+        line-height: 1.4;
         font-variant-numeric: tabular-nums;
       }
       .id-val.green {
@@ -639,7 +680,7 @@
         flex-direction: column;
       }
       .affil-header {
-        background: var(--navy);
+        background: var(--navy-dark);
         padding: 1.25rem 1.5rem;
         color: #fff;
         display: flex;
@@ -780,7 +821,7 @@
         margin-top: 4px;
       }
       .cta-strip-btn {
-        background: var(--navy);
+        background: var(--navy-dark);
         color: #fff;
         font-size: 13px;
         font-weight: 500;
@@ -794,12 +835,12 @@
         transition: background 0.2s;
       }
       .cta-strip-btn:hover {
-        background: var(--navy-dark);
+        background: var(--navy-deep);
       }
 
       /* CONTACT */
       .contact-block {
-        background: var(--navy);
+        background: var(--navy-dark);
         padding: 4.5rem 3rem;
       }
       .contact-inner {
@@ -898,7 +939,7 @@
 
       /* FOOTER */
       .footer {
-        background: #0e1f16;
+        background: #062c36;
         padding: 2rem 3rem;
         display: flex;
         justify-content: space-between;
@@ -997,8 +1038,11 @@
           text-align: center;
         }
         .id-band {
-          gap: 1.25rem;
           padding: 1rem 1.5rem;
+        }
+        .id-inner {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
         }
         .cta-strip {
           flex-direction: column;
@@ -1046,7 +1090,7 @@
       .nav.scrolled {
         padding-top: 0.55rem;
         padding-bottom: 0.55rem;
-        background: rgba(23, 102, 116, 0.95);
+        background: rgba(14, 85, 96, 0.95);
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.4);
       }
@@ -1061,7 +1105,7 @@
         bottom: -4px;
         height: 2px;
         width: 0;
-        background: var(--green-border);
+        background: var(--green-600);
         transition: width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
       .nav-links a:hover::after,
@@ -1409,12 +1453,11 @@
         <a href="./Home.html" class="active">Home</a>
         <a href="./About.html">About</a>
         <a href="./Veterans_CP.html">Veterans &amp; C&amp;P</a>
-        <a href="./Ecosystem.html">Ecosystem</a>
         <a href="./Partner_and_Network.html">Provider network</a>
         <a href="./Contracting.html">Contracting</a>
         <a href="./Contact.html">Contact</a>
       </div>
-      <a href="#contact" class="nav-cta">Get in touch</a>
+      <a href="./Contact.html" class="nav-cta">Get in touch</a>
     </nav>
 
     <!-- HERO -->
@@ -1475,23 +1518,26 @@
 
     <!-- IDENTIFIER BAND -->
     <div class="id-band">
-      <div class="id-item">
-        <div class="id-label">UEI</div>
-        <div class="id-val">CD9AXM3DP9N3</div>
-      </div>
-      <div class="id-item">
-        <div class="id-label">NAICS</div>
-        <div class="id-val">
-          541611 · 541612 · 621111 · 621210 · 621320 · 621330 · 621340 · 621420
+      <div class="id-inner">
+        <div class="id-item">
+          <div class="id-label">UEI</div>
+          <div class="id-val">CD9AXM3DP9N3</div>
         </div>
-      </div>
-      <div class="id-item">
-        <div class="id-label">SAM.gov</div>
-        <div class="id-val green">Active</div>
-      </div>
-      <div class="id-item">
-        <div class="id-label">Compliance</div>
-        <div class="id-val">HIPAA · 42 CFR Part 2</div>
+        <div class="id-item">
+          <div class="id-label">NAICS</div>
+          <div class="id-val">
+            541611 · 541612 · 621111 · 621210 · 621320 · 621330 · 621340 ·
+            621420
+          </div>
+        </div>
+        <div class="id-item">
+          <div class="id-label">SAM.gov</div>
+          <div class="id-val green">Active</div>
+        </div>
+        <div class="id-item">
+          <div class="id-label">Compliance</div>
+          <div class="id-val">HIPAA · 42 CFR Part 2</div>
+        </div>
       </div>
     </div>
 
