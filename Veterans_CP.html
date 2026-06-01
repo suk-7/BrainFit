@@ -1606,18 +1606,19 @@
         </p>
         <div class="contact-form">
           <div class="form-row">
-            <input type="text" placeholder="Full name" />
+            <input type="text" id="v-name" placeholder="Full name" />
             <input
               type="text"
+              id="v-credentials"
               placeholder="Credentials (e.g. Psy.D., M.D., Au.D.)"
             />
           </div>
           <div class="form-row">
-            <input type="email" placeholder="Email address" />
-            <input type="tel" placeholder="Phone number" />
+            <input type="email" id="v-email" placeholder="Email address" />
+            <input type="tel" id="v-phone" placeholder="Phone number" />
           </div>
           <div class="form-row">
-            <select>
+            <select id="v-specialty">
               <option value="" disabled selected>Clinical specialty</option>
               <option>Psychology</option>
               <option>Dentistry</option>
@@ -1625,7 +1626,7 @@
               <option>Optometry</option>
               <option>Medical (M.D. / D.O. / NP / PA)</option>
             </select>
-            <select>
+            <select id="v-state">
               <option value="" disabled selected>State(s) licensed in</option>
               <option>Arizona</option>
               <option>California</option>
@@ -1641,7 +1642,7 @@
               <option>Other</option>
             </select>
           </div>
-          <select>
+          <select id="v-experience">
             <option value="" disabled selected>
               Prior federal evaluation experience?
             </option>
@@ -1653,9 +1654,10 @@
             <option>No — but I am interested in learning</option>
           </select>
           <textarea
+            id="v-message"
             placeholder="Tell us about your practice, availability, or any questions you have..."
           ></textarea>
-          <button class="submit-btn" id="submitBtn" type="submit">
+          <button class="submit-btn" id="submitBtn" type="button">
             Submit application
           </button>
         </div>
@@ -1866,19 +1868,45 @@
           });
 
         // Contact form -> inline success
+
         var submitBtn = document.getElementById("submitBtn");
         if (submitBtn) {
-          submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            var form = document.querySelector(".contact-form");
-            var success = document.getElementById("formSuccess");
-            if (form && success) {
+          submitBtn.addEventListener("click", async function () {
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+            const data = {
+              sheet: "Veterans_CP",
+              name: document.getElementById("v-name").value,
+              credentials: document.getElementById("v-credentials").value,
+              email: document.getElementById("v-email").value,
+              phone: document.getElementById("v-phone").value,
+              specialty: document.getElementById("v-specialty").value,
+              state: document.getElementById("v-state").value,
+              experience: document.getElementById("v-experience").value,
+              message: document.getElementById("v-message").value,
+            };
+            try {
+              await fetch(
+                "https://script.google.com/macros/s/AKfycbzOIdkTTMBifbDvpjFvjr-M_bLlPRaRfPFc5blPVqhW6t2gc70_XreaBD-dndgdG-vr8Q/exec",
+                {
+                  method: "POST",
+                  mode: "no-cors",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              );
+              var form = document.querySelector(".contact-form");
+              var success = document.getElementById("formSuccess");
               form.style.transition = "opacity 0.3s";
               form.style.opacity = "0";
-              setTimeout(function () {
+              setTimeout(() => {
                 form.style.display = "none";
                 success.style.display = "block";
               }, 300);
+            } catch (error) {
+              alert("Failed to submit. Please try again.");
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit application";
             }
           });
         }
