@@ -1,0 +1,1165 @@
+<!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Provider Network — Brain Fit, LLC</title>
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+        />
+        <style>
+          :root {
+            --navy: #176674;
+            --navy-dark: #0e5560;
+            --navy-deep: #0e1f16;
+            --bronze: #b8794a;
+            --bronze-dark: #8f5a33;
+            --blue-50: #eff3ea;
+            --blue-100: #a8d4d8;
+            --blue-600: #2d8898;
+            --blue-800: #0e5560;
+            --stone: #fbf8f1;
+            --gray-50: #f8f9fa;
+            --gray-100: #f1f3f5;
+            --gray-200: #e9ecef;
+            --gray-400: #adb5bd;
+            --gray-600: #6c757d;
+            --text-primary: #1a1a2e;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --border: #e2e8f0;
+
+            --sp-psych: #378add;
+            --sp-dent: #1d9e75;
+            --sp-audio: #ef9f27;
+            --sp-optom: #d4537e;
+            --sp-med: #7f77dd;
+          }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+          body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--text-primary);
+            background: #fff;
+            line-height: 1.6;
+          }
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+
+          /* NAV */
+          .nav {
+            background: #0e5560;
+            padding: 0.875rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          }
+          .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+          }
+          .nav-brand svg {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+          }
+          .nav-brand-text {
+            font-size: 18px;
+            font-weight: 400;
+            font-family: "DM Serif Display", serif;
+            color: #fff;
+          }
+          .nav-brand-desc {
+            font-size: 9.5px;
+            color: var(--blue-100);
+            display: block;
+            font-weight: 500;
+            margin-top: 2px;
+            letter-spacing: 1.6px;
+          }
+          .nav-links {
+            display: flex;
+            gap: 2rem;
+          }
+          .nav-links a {
+            font-size: 13px;
+            color: var(--blue-100);
+            transition: color 0.2s;
+          }
+          .nav-links a:hover {
+            color: #fff;
+          }
+          .nav-links a.active {
+            color: #fff;
+            font-weight: 500;
+          }
+          .nav-cta {
+            background: var(--bronze);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 7px 18px;
+            border-radius: 6px;
+          }
+
+          /* HEADER */
+          .page-header {
+            background:
+              radial-gradient(
+                ellipse at top right,
+                rgba(184, 121, 74, 0.15),
+                transparent 55%
+              ),
+              radial-gradient(
+                ellipse at bottom left,
+                rgba(14, 85, 96, 0.35),
+                transparent 60%
+              ),
+              #0e5560;
+            padding: 3.5rem 3rem 3rem;
+            position: relative;
+            overflow: hidden;
+          }
+          .page-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+              linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+              linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.025) 1px,
+                transparent 1px
+              );
+            background-size: 60px 60px;
+            pointer-events: none;
+          }
+          .page-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+          }
+          .page-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(184, 121, 74, 0.15);
+            border: 1px solid rgba(229, 201, 168, 0.3);
+            color: #e5c9a8;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 99px;
+            margin-bottom: 1.25rem;
+          }
+          .page-label::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #b8794a;
+            flex-shrink: 0;
+          }
+          .page-header h1 {
+            font-family: "DM Serif Display", serif;
+            font-size: 40px;
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.4px;
+          }
+          .page-header p {
+            font-size: 15px;
+            color: var(--blue-100);
+            line-height: 1.7;
+            max-width: 680px;
+          }
+          .header-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+          }
+          .hstat-num {
+            font-family: "DM Serif Display", serif;
+            font-size: 32px;
+            color: #fff;
+            font-weight: 400;
+            line-height: 1;
+          }
+          .hstat-lbl {
+            font-size: 11px;
+            color: var(--blue-100);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 6px;
+          }
+
+          /* FILTER BAR */
+          .filter-bar {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 100%;
+          }
+          .filter-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+          }
+          .filter-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+            margin-right: 6px;
+          }
+          .filter-chip {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            background: #fff;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            border-radius: 99px;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: "DM Sans", sans-serif;
+          }
+          .filter-chip:hover {
+            background: var(--gray-50);
+          }
+          .filter-chip.active {
+            background: var(--navy);
+            color: #fff;
+            border-color: var(--navy);
+          }
+          .filter-chip.active .chip-dot {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+          }
+          .chip-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+          }
+          .filter-count {
+            margin-left: auto;
+            font-size: 12px;
+            color: var(--text-muted);
+          }
+          .filter-count strong {
+            color: var(--text-primary);
+            font-weight: 500;
+          }
+
+          /* LAYOUT */
+          .map-layout {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            height: calc(100vh - 64px - 270px - 60px);
+            min-height: 600px;
+            max-width: 100%;
+          }
+
+          /* SIDEBAR */
+          .sidebar {
+            background: #fff;
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            padding: 0;
+          }
+          .provider-card {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.15s;
+          }
+          .provider-card:hover {
+            background: var(--gray-50);
+          }
+          .provider-card.highlighted {
+            background: var(--blue-50);
+            border-left: 3px solid var(--navy);
+            padding-left: calc(1.5rem - 3px);
+          }
+          .provider-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+          }
+          .provider-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            flex: 1;
+          }
+          .specialty-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 99px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+          }
+          .specialty-tag .tag-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+          }
+          .tag-psych {
+            background: rgba(55, 138, 221, 0.12);
+            color: #185fa5;
+          }
+          .tag-psych .tag-dot {
+            background: var(--sp-psych);
+          }
+          .tag-dent {
+            background: rgba(29, 158, 117, 0.12);
+            color: #0f6e56;
+          }
+          .tag-dent .tag-dot {
+            background: var(--sp-dent);
+          }
+          .tag-audio {
+            background: rgba(239, 159, 39, 0.12);
+            color: #854f0b;
+          }
+          .tag-audio .tag-dot {
+            background: var(--sp-audio);
+          }
+          .tag-optom {
+            background: rgba(212, 83, 126, 0.12);
+            color: #993556;
+          }
+          .tag-optom .tag-dot {
+            background: var(--sp-optom);
+          }
+          .tag-med {
+            background: rgba(127, 119, 221, 0.12);
+            color: #3c3489;
+          }
+          .tag-med .tag-dot {
+            background: var(--sp-med);
+          }
+          .provider-loc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+          }
+          .provider-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.5;
+          }
+
+          /* MAP */
+          #map {
+            height: 100%;
+            background: var(--gray-100);
+          }
+
+          /* MAP MARKER STYLES (custom div icons) */
+          .provider-marker {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: transform 0.15s;
+          }
+          .provider-marker:hover {
+            transform: scale(1.25);
+          }
+          .marker-psych {
+            background: var(--sp-psych);
+          }
+          .marker-dent {
+            background: var(--sp-dent);
+          }
+          .marker-audio {
+            background: var(--sp-audio);
+          }
+          .marker-optom {
+            background: var(--sp-optom);
+          }
+          .marker-med {
+            background: var(--sp-med);
+          }
+
+          /* Popup */
+          .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+          }
+          .leaflet-popup-content {
+            margin: 12px 14px;
+            font-family: "DM Sans", sans-serif;
+          }
+          .popup-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+          }
+          .popup-spec {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+          }
+          .popup-loc {
+            font-size: 12px;
+            color: var(--text-secondary);
+          }
+
+          /* FOOTER */
+          .footer-note {
+            background: var(--gray-50);
+            padding: 1rem 3rem;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+          }
+
+          /* RESPONSIVE */
+          @media (max-width: 900px) {
+            .map-layout {
+              grid-template-columns: 1fr;
+              height: auto;
+            }
+            .sidebar {
+              max-height: 400px;
+            }
+            #map {
+              height: 500px;
+            }
+            .nav {
+              padding: 0.75rem 1.5rem;
+            }
+            .nav-links {
+              display: none;
+            }
+            .page-header {
+              padding: 2.5rem 1.5rem 2rem;
+            }
+            .page-header h1 {
+              font-size: 28px;
+            }
+            .filter-bar {
+              padding: 1rem 1.5rem;
+            }
+            .header-stats {
+              gap: 1.5rem;
+            }
+          }
+
+          /* ===== INTERACTIVE ENHANCEMENTS ===== */
+
+          /* Header reveal animations */
+          .page-label,
+          .page-header h1,
+          .page-header p,
+          .header-stats {
+            opacity: 0;
+            transform: translateY(16px);
+            transition:
+              opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+          }
+          .page-label.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0s;
+          }
+          .page-header h1.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.08s;
+          }
+          .page-header p.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.16s;
+          }
+          .header-stats.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.24s;
+          }
+
+          /* Header stat counters — subtle pop */
+          .hstat-num {
+            transition:
+              transform 0.2s,
+              opacity 0.2s;
+          }
+          .header-stats:hover .hstat-num {
+            opacity: 0.5;
+          }
+          .header-stats > div {
+            cursor: default;
+            transition: transform 0.2s;
+          }
+          .header-stats > div:hover .hstat-num {
+            opacity: 1;
+            transform: scale(1.08);
+          }
+          .header-stats > div:hover .hstat-lbl {
+            color: #fff;
+            transition: color 0.2s;
+          }
+
+          /* Nav underline indicator (same as Contracting page) */
+          .nav-links a {
+            position: relative;
+          }
+          .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--bronze);
+            border-radius: 2px;
+            transform: scaleX(0);
+            transition: transform 0.2s;
+          }
+          .nav-links a:hover::after,
+          .nav-links a.active::after {
+            transform: scaleX(1);
+          }
+
+          /* Nav CTA lift */
+          .nav-cta {
+            transition:
+              background 0.2s,
+              color 0.2s,
+              transform 0.15s,
+              box-shadow 0.15s;
+          }
+          .nav-cta:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
+
+          /* Filter chips — smoother, more satisfying */
+          .filter-chip {
+            transition: all 0.18s cubic-bezier(0.22, 0.61, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+          }
+          .filter-chip::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0);
+            transition: background 0.15s;
+            pointer-events: none;
+            border-radius: inherit;
+          }
+          .filter-chip:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+          }
+          .filter-chip.active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(14, 85, 96, 0.25);
+          }
+          .filter-chip:active {
+            transform: scale(0.97);
+          }
+
+          /* Sidebar provider cards — richer hover */
+          .provider-card {
+            transition:
+              background 0.15s,
+              padding-left 0.18s,
+              border-left-color 0.18s;
+            border-left: 3px solid transparent;
+          }
+          .provider-card:hover {
+            background: var(--gray-50);
+            border-left-color: var(--blue-100);
+            padding-left: calc(1.5rem - 3px);
+          }
+          .provider-card.highlighted {
+            border-left-color: var(--navy);
+          }
+          .provider-card:hover .provider-name {
+            color: var(--navy);
+            transition: color 0.15s;
+          }
+
+          /* Specialty tags — subtle lift on hover */
+          .specialty-tag {
+            transition:
+              transform 0.15s,
+              box-shadow 0.15s;
+          }
+          .provider-card:hover .specialty-tag {
+            transform: scale(1.04);
+          }
+
+          /* Map markers — already have scale hover, add glow */
+          .provider-marker {
+            transition:
+              transform 0.15s,
+              box-shadow 0.15s;
+          }
+          .provider-marker:hover {
+            transform: scale(1.3);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+          }
+          .marker-psych:hover {
+            box-shadow: 0 4px 14px rgba(55, 138, 221, 0.5);
+          }
+          .marker-dent:hover {
+            box-shadow: 0 4px 14px rgba(29, 158, 117, 0.5);
+          }
+          .marker-audio:hover {
+            box-shadow: 0 4px 14px rgba(239, 159, 39, 0.5);
+          }
+          .marker-optom:hover {
+            box-shadow: 0 4px 14px rgba(212, 83, 126, 0.5);
+          }
+          .marker-med:hover {
+            box-shadow: 0 4px 14px rgba(127, 119, 221, 0.5);
+          }
+
+          /* Leaflet popup — smoother, slightly elevated */
+          .leaflet-popup-content-wrapper {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            animation: popupIn 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+          }
+          @keyframes popupIn {
+            from {
+              opacity: 0;
+              transform: translateY(6px) scale(0.97);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+            }
+          }
+
+          /* Filter bar slide down */
+          .filter-bar {
+            animation: slideDown 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+            animation-delay: 0.35s;
+            opacity: 0;
+          }
+          @keyframes slideDown {
+            from {
+              opacity: 0;
+              transform: translateY(-8px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          /* Count badge pulse on filter change */
+          #visible-count {
+            display: inline-block;
+            transition:
+              transform 0.2s,
+              color 0.2s;
+          }
+          #visible-count.updating {
+            transform: scale(1.3);
+            color: var(--navy);
+          }
+
+          /* Footer note fade */
+          .footer-note {
+            animation: fadeIn 0.5s ease both;
+            animation-delay: 0.5s;
+            opacity: 0;
+          }
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+          /* Focus ring for accessibility */
+          .filter-chip:focus-visible,
+          a:focus-visible {
+            outline: 2px solid var(--blue-600);
+            outline-offset: 3px;
+          }
+        </style>
+      </head>
+      <body>
+        <!-- NAV -->
+        <nav class="nav">
+          <a href="/" class="nav-brand">
+            <svg
+              viewBox="0 0 64 64"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="Brain Fit"
+            >
+              <polygon
+                points="32,8 54.83,24.59 46.11,51.41 17.89,51.41 9.17,24.59"
+                fill="none"
+                stroke="#fff"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+                opacity="0.5"
+              />
+              <circle cx="32" cy="8" r="6" fill="#fff" />
+              <circle cx="54.83" cy="24.59" r="6" fill="#fff" />
+              <circle cx="46.11" cy="51.41" r="6" fill="#fff" />
+              <circle cx="17.89" cy="51.41" r="6" fill="#fff" />
+              <circle cx="9.17" cy="24.59" r="6" fill="#fff" />
+            </svg>
+            <div>
+              <div class="nav-brand-text">Brain Fit</div>
+              <div class="nav-brand-desc">MULTI-SPECIALTY NETWORK</div>
+            </div>
+          </a>
+          <div class="nav-links">
+            <a href="./Home.html">Home</a>
+            <a href="./About.html">About</a>
+            <a href="./Veterans_CP.html">Veterans &amp; C&amp;P</a>
+            <a href="./Partner_and_Network.html" class="active">Provider network</a>
+            <a href="./Contracting.html">Contracting</a>
+            <a href="./Contact.html">Contact</a>
+          </div>
+          <a href="./Contact.html" class="nav-cta">Get in touch</a>
+        </nav>
+
+        <!-- PAGE HEADER -->
+        <header class="page-header">
+          <div class="page-header-inner">
+            <div class="page-label">Provider network</div>
+            <h1>21 credentialed providers, deployed nationally</h1>
+            <p>
+              Brain Fit's active multi-specialty provider network spans 10
+              states across psychology, dentistry, and optometry — with
+              audiology and medical specialties actively recruiting. Several
+              network psychologists hold PSYPACT authorization, extending
+              licensed telehealth coverage further.
+            </p>
+            <div class="header-stats">
+              <div>
+                <div class="hstat-num">21</div>
+                <div class="hstat-lbl">Active providers</div>
+              </div>
+              <div>
+                <div class="hstat-num">10</div>
+                <div class="hstat-lbl">States</div>
+              </div>
+              <div>
+                <div class="hstat-num">5</div>
+                <div class="hstat-lbl">Specialties</div>
+              </div>
+              <div>
+                <div class="hstat-num">40+</div>
+                <div class="hstat-lbl">Telehealth states (PSYPACT)</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+          <div class="filter-bar-inner">
+            <span class="filter-label">Filter by specialty</span>
+            <button class="filter-chip active" data-spec="all">
+              All specialties
+            </button>
+            <button class="filter-chip" data-spec="Psychology">
+              <span class="chip-dot" style="background: var(--sp-psych)"></span
+              >Psychology
+            </button>
+            <button class="filter-chip" data-spec="Dentistry">
+              <span class="chip-dot" style="background: var(--sp-dent)"></span
+              >Dentistry
+            </button>
+            <button class="filter-chip" data-spec="Optometry">
+              <span class="chip-dot" style="background: var(--sp-optom)"></span
+              >Optometry
+            </button>
+            <button class="filter-chip" data-spec="Audiology">
+              <span class="chip-dot" style="background: var(--sp-audio)"></span
+              >Audiology
+            </button>
+            <button class="filter-chip" data-spec="Medical">
+              <span class="chip-dot" style="background: var(--sp-med)"></span
+              >Medical
+            </button>
+            <div class="filter-count">
+              Showing <strong id="visible-count">21</strong> of 21 providers
+            </div>
+          </div>
+        </div>
+
+        <!-- MAP LAYOUT -->
+        <div class="map-layout">
+          <aside class="sidebar" id="sidebar"></aside>
+          <div id="map"></div>
+        </div>
+
+        <div class="footer-note">
+          Map shows approximate provider locations. Some positions are based on
+          city or metropolitan-area centroids pending exact-address
+          confirmation. Brain Fit, LLC &middot; HIPAA &amp; 42 CFR Part 2
+          Compliant
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+        <script>
+          // ============ PROVIDER DATA ============
+          // 21 active Brain Fit providers (anonymized for public display)
+          // Coordinates are exact where addresses are documented, otherwise city centroids.
+          const PROVIDERS = [
+            {
+              spec: "Psychology",
+              loc: "Cerritos, CA",
+              lat: 33.8716,
+              lng: -118.0573,
+              note: "",
+            },
+            {
+              spec: "Psychology",
+              loc: "Mesa, AZ",
+              lat: 33.3946,
+              lng: -111.851,
+              note: "",
+            },
+            {
+              spec: "Optometry",
+              loc: "California",
+              lat: 37.7749,
+              lng: -122.4194,
+              note: "",
+            },
+            {
+              spec: "Optometry",
+              loc: "Phoenix, AZ",
+              lat: 33.4484,
+              lng: -112.074,
+              note: "Multiple AZ locations",
+            },
+            {
+              spec: "Psychology",
+              loc: "Phoenix, AZ",
+              lat: 33.5066,
+              lng: -112.0958,
+              note: "",
+            },
+            {
+              spec: "Psychology",
+              loc: "Phoenix, AZ",
+              lat: 33.5482,
+              lng: -112.0732,
+              note: "",
+            },
+            {
+              spec: "Psychology",
+              loc: "Florida",
+              lat: 28.5383,
+              lng: -81.3792,
+              note: "PSYPACT-authorized",
+            },
+            {
+              spec: "Dentistry",
+              loc: "California",
+              lat: 34.0522,
+              lng: -118.2437,
+              note: "",
+            },
+            {
+              spec: "Dentistry",
+              loc: "California",
+              lat: 34.0722,
+              lng: -118.2637,
+              note: "",
+            },
+            {
+              spec: "Optometry",
+              loc: "Idaho",
+              lat: 43.615,
+              lng: -116.2023,
+              note: "",
+            },
+            {
+              spec: "Psychology",
+              loc: "Pennsylvania",
+              lat: 39.9526,
+              lng: -75.1652,
+              note: "PSYPACT — 40+ states &amp; DC",
+            },
+            {
+              spec: "Optometry",
+              loc: "New York",
+              lat: 40.7128,
+              lng: -74.006,
+              note: "",
+            },
+            {
+              spec: "Psychology",
+              loc: "Phoenix, AZ",
+              lat: 33.516,
+              lng: -112.0708,
+              note: "",
+            },
+            {
+              spec: "Dentistry",
+              loc: "Seattle, WA",
+              lat: 47.6062,
+              lng: -122.3321,
+              note: "",
+            },
+            {
+              spec: "Dentistry",
+              loc: "New Jersey",
+              lat: 40.0583,
+              lng: -74.4057,
+              note: "Multiple locations",
+            },
+            {
+              spec: "Dentistry",
+              loc: "California",
+              lat: 34.0322,
+              lng: -118.2237,
+              note: "",
+            },
+            {
+              spec: "Optometry",
+              loc: "Arizona",
+              lat: 33.4284,
+              lng: -112.054,
+              note: "",
+            },
+            {
+              spec: "Psychology",
+              loc: "Colorado",
+              lat: 39.7392,
+              lng: -104.9903,
+              note: "PSYPACT — 40+ states",
+            },
+            {
+              spec: "Psychology",
+              loc: "Austin, TX",
+              lat: 30.2666,
+              lng: -97.7411,
+              note: "PSYPACT-authorized",
+            },
+            {
+              spec: "Psychology",
+              loc: "Miami, FL",
+              lat: 25.6928,
+              lng: -80.4485,
+              note: "",
+            },
+            {
+              spec: "Optometry",
+              loc: "Phoenix, AZ",
+              lat: 33.85,
+              lng: -112.13,
+              note: "",
+            },
+          ];
+
+          const SPEC_CLASS = {
+            Psychology: { marker: "marker-psych", tag: "tag-psych" },
+            Dentistry: { marker: "marker-dent", tag: "tag-dent" },
+            Audiology: { marker: "marker-audio", tag: "tag-audio" },
+            Optometry: { marker: "marker-optom", tag: "tag-optom" },
+            Medical: { marker: "marker-med", tag: "tag-med" },
+          };
+
+          // ============ MAP SETUP ============
+          const map = L.map("map", {
+            center: [39.5, -98.5],
+            zoom: 4,
+            scrollWheelZoom: true,
+            zoomControl: true,
+          });
+          L.tileLayer(
+            "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+            {
+              attribution: "&copy; OpenStreetMap &copy; CARTO",
+              subdomains: "abcd",
+              maxZoom: 19,
+            },
+          ).addTo(map);
+
+          // ============ MARKERS + SIDEBAR ============
+          const markers = [];
+          const cards = [];
+          const sidebar = document.getElementById("sidebar");
+
+          PROVIDERS.forEach((p, i) => {
+            const cls = SPEC_CLASS[p.spec] || SPEC_CLASS["Medical"];
+
+            // Marker
+            const icon = L.divIcon({
+              className: "",
+              html: `<div class="provider-marker ${cls.marker}" title="${p.spec} provider"></div>`,
+              iconSize: [18, 18],
+              iconAnchor: [9, 9],
+            });
+            const m = L.marker([p.lat, p.lng], { icon }).addTo(map);
+            m.bindPopup(`
+        <div class="popup-spec" style="color:${markerColor(p.spec)}">${p.spec.toUpperCase()}</div>
+        <div class="popup-name">${p.loc}</div>
+        ${p.note ? `<div class="popup-loc" style="margin-top:4px;">${p.note}</div>` : ""}
+      `);
+            m.providerIndex = i;
+            markers.push(m);
+
+            const card = document.createElement("div");
+            card.className = "provider-card";
+            card.dataset.spec = p.spec;
+            card.innerHTML = `
+        <div class="provider-head">
+          <div class="provider-name">${p.loc}</div>
+          <span class="specialty-tag ${cls.tag}"><span class="tag-dot"></span>${p.spec}</span>
+        </div>
+        ${p.note ? `<div class="provider-note">${p.note}</div>` : ""}
+      `;
+            card.addEventListener("click", () => {
+              map.flyTo([p.lat, p.lng], 9, { duration: 0.8 });
+              m.openPopup();
+              cards.forEach((c) => c.classList.remove("highlighted"));
+              card.classList.add("highlighted");
+            });
+            sidebar.appendChild(card);
+            cards.push(card);
+          });
+
+          function markerColor(spec) {
+            switch (spec) {
+              case "Psychology":
+                return "#185FA5";
+              case "Dentistry":
+                return "#0F6E56";
+              case "Audiology":
+                return "#854F0B";
+              case "Optometry":
+                return "#993556";
+              case "Medical":
+                return "#3C3489";
+              default:
+                return "#176674";
+            }
+          }
+
+          // ============ FILTERS ============
+          const chips = document.querySelectorAll(".filter-chip");
+          const visibleCount = document.getElementById("visible-count");
+
+          chips.forEach((chip) => {
+            chip.addEventListener("click", () => {
+              const spec = chip.dataset.spec;
+
+              chips.forEach((c) => c.classList.remove("active"));
+              chip.classList.add("active");
+
+              let count = 0;
+              cards.forEach((card, i) => {
+                const cardSpec = card.dataset.spec;
+                const visible = spec === "all" || cardSpec === spec;
+                card.style.display = visible ? "" : "none";
+                if (visible) {
+                  markers[i].addTo(map);
+                  count++;
+                } else {
+                  map.removeLayer(markers[i]);
+                }
+              });
+              visibleCount.textContent = count;
+            });
+          });
+
+          // Fit map to all markers initially
+          if (markers.length) {
+            const group = L.featureGroup(markers);
+            map.fitBounds(group.getBounds().pad(0.15));
+          }
+
+          // ── Pulse the count badge on filter change ────────────────────
+          const countEl = document.getElementById("visible-count");
+          chips.forEach((chip) => {
+            chip.addEventListener("click", () => {
+              countEl.classList.remove("updating");
+              void countEl.offsetWidth; // reflow to restart animation
+              countEl.classList.add("updating");
+              setTimeout(() => countEl.classList.remove("updating"), 220);
+            });
+          });
+
+          // ── Header reveal on load ─────────────────────────────────────
+          const headerEls = [
+            document.querySelector(".page-label"),
+            document.querySelector(".page-header h1"),
+            document.querySelector(".page-header p"),
+            document.querySelector(".header-stats"),
+          ];
+          requestAnimationFrame(() => {
+            headerEls.forEach((el) => el && el.classList.add("visible"));
+          });
+
+          // ── Smooth scroll for anchor links ────────────────────────────
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", (e) => {
+              const target = document.querySelector(
+                anchor.getAttribute("href"),
+              );
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            });
+          });
+        </script>
+      </body>
+    </html>
+  </body>
+</html>

@@ -1,0 +1,1951 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join the Team | Brain Fit Team</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --pine: #176674;
+        --pine-dark: #0e5560;
+        --pine-mid: #2d8898;
+        --pine-deep: #062c36;
+        --brass: #b8794a;
+        --brass-dark: #8b5530;
+        --brass-light: #c99566;
+        --cream: #fbf8f1;
+        --cream-dark: #f5efd6;
+        --cream-edge: #e0cd8a;
+        --spec-psych: #378add;
+        --spec-dent: #1d9e75;
+        --spec-audio: #ef9f27;
+        --spec-optom: #d4537e;
+        --spec-med: #7f77dd;
+        --gray-50: #fafbf7;
+        --gray-100: #f1f3ee;
+        --gray-200: #e2e5dd;
+        --gray-400: #a8aaa0;
+        --text-primary: #0e5560;
+        --text-secondary: #5f5e5a;
+        --text-muted: #888780;
+        --border: #e2e5dd;
+        --pine-pale: #a8d4d8;
+        --radius: 10px;
+        --radius-sm: 6px;
+        --radius-pill: 99px;
+        --bronze: #b8794a;
+        --bronze-light: #e5c9a8;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        color: var(--text-primary);
+        background: #fff;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* NAV */
+      .nav {
+        background: var(--pine-dark);
+        padding: 0.875rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #fff;
+      }
+      .nav-brand svg {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+      .nav-brand-text {
+        font-size: 18px;
+        font-weight: 400;
+        font-family: "DM Serif Display", serif;
+        color: #fff;
+      }
+      .nav-brand-desc {
+        font-size: 9.5px;
+        color: var(--pine-pale);
+        display: block;
+        font-weight: 500;
+        margin-top: 2px;
+        letter-spacing: 1.6px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        font-size: 13px;
+        color: var(--pine-pale);
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: #fff;
+      }
+      .nav-links a.active {
+        color: #fff;
+        font-weight: 500;
+      }
+      .nav-cta {
+        background: var(--cream);
+        color: var(--pine-dark);
+        font-size: 12px;
+        font-weight: 500;
+        padding: 7px 18px;
+        border-radius: var(--radius-sm);
+        transition: background 0.2s;
+      }
+      .nav-cta:hover {
+        background: var(--cream-dark);
+      }
+
+      /* HERO */
+      .hero {
+        background: var(--pine-dark);
+        padding: 5rem 3rem 4rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 60px 60px;
+        pointer-events: none;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(184, 121, 74, 0.15);
+        border: 1px solid rgba(229, 201, 168, 0.3);
+        color: var(--bronze-light);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: var(--radius-pill);
+        margin-bottom: 1.25rem;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--bronze);
+        flex-shrink: 0;
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: 44px;
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero p {
+        font-size: 16px;
+        color: var(--pine-pale);
+        line-height: 1.75;
+        max-width: 620px;
+        margin: 0 auto 2rem;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-cream {
+        background: var(--cream);
+        color: var(--pine-dark);
+        font-size: 14px;
+        font-weight: 500;
+        padding: 12px 28px;
+        border-radius: var(--radius-sm);
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .btn-cream:hover {
+        background: var(--cream-dark);
+      }
+      .btn-outline {
+        background: transparent;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 12px 28px;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        cursor: pointer;
+        transition: background 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      /* TRUST STRIP */
+      .trust-strip {
+        background: var(--pine-deep);
+        padding: 1.25rem 3rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .trust-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .trust-item {
+        text-align: center;
+      }
+      .trust-label {
+        font-size: 10px;
+        color: var(--pine-pale);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        font-weight: 500;
+      }
+      .trust-val {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      /* SPECIALTY BAR */
+      .specialty-bar {
+        background: var(--pine);
+        padding: 1rem 3rem;
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: wrap;
+      }
+      .spec-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.5rem 1.5rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .spec-item:last-child {
+        border-right: none;
+      }
+      .spec-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .spec-name {
+        font-size: 13px;
+        color: var(--pine-pale);
+        font-weight: 500;
+      }
+
+      /* SECTIONS */
+      .section {
+        padding: 4rem 3rem;
+      }
+      .section-inner {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--brass);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.5rem;
+      }
+      .section h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 30px;
+        font-weight: 400;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        line-height: 1.25;
+      }
+      .section p {
+        font-size: 15px;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 0.875rem;
+        max-width: 720px;
+      }
+      .divider {
+        border: none;
+        border-top: 1px solid var(--border);
+      }
+
+      /* STAT ROW */
+      .stat-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin: 2rem 0;
+      }
+      .stat-card {
+        background: var(--gray-100);
+        border-radius: var(--radius-sm);
+        padding: 1.25rem;
+        text-align: center;
+      }
+      .stat-num {
+        font-size: 26px;
+        font-weight: 500;
+        color: var(--pine);
+        font-family: "DM Serif Display", serif;
+      }
+      .stat-lbl {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 4px;
+        line-height: 1.4;
+      }
+
+      /* FLOW DIAGRAM */
+      .flow-row {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr auto 1fr;
+        gap: 0;
+        align-items: center;
+        margin: 2rem 0 0.5rem;
+      }
+      .flow-box {
+        background: var(--gray-100);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        text-align: center;
+      }
+      .flow-box.highlight {
+        background: var(--cream-dark);
+        border-color: var(--cream-edge);
+      }
+      .flow-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+      .flow-title.brass {
+        color: var(--brass-dark);
+      }
+      .flow-sub {
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+      .flow-sub.brass {
+        color: var(--brass-dark);
+      }
+      .flow-arrow {
+        font-size: 22px;
+        color: var(--gray-400);
+        padding: 0 12px;
+        text-align: center;
+      }
+      .flow-note {
+        font-size: 12px;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 0.5rem;
+        font-style: italic;
+      }
+
+      /* WHY GRID */
+      .why-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+        margin-top: 1.5rem;
+      }
+      .why-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        border-top: 3px solid var(--pine);
+      }
+      .why-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+      .why-desc {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.65;
+      }
+
+      /* SPECIALTY CARDS */
+      .spec-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 1.5rem;
+      }
+      .spec-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        transition: border-color 0.2s;
+      }
+      .spec-card:hover {
+        border-color: var(--brass);
+      }
+      .spec-card.muted {
+        background: var(--gray-100);
+      }
+      .spec-card-head {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 10px;
+      }
+      .spec-dot-lg {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .spec-card-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+      .spec-card-list {
+        list-style: none;
+        padding: 0;
+      }
+      .spec-card-list li {
+        font-size: 12px;
+        color: var(--text-secondary);
+        padding: 3px 0 3px 14px;
+        position: relative;
+        line-height: 1.55;
+      }
+      .spec-card-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--brass);
+      }
+
+      /* CTA STRIP */
+      .cta-strip {
+        background: var(--cream-dark);
+        border: 1px solid var(--cream-edge);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .cta-strip-text {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--brass-dark);
+      }
+      .cta-strip-sub {
+        font-size: 13px;
+        color: var(--brass-dark);
+        margin-top: 4px;
+        opacity: 0.85;
+      }
+      .cta-strip-btn {
+        background: var(--pine-dark);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 11px 24px;
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-family: "DM Sans", sans-serif;
+        transition: background 0.2s;
+      }
+      .cta-strip-btn:hover {
+        background: var(--pine-deep);
+      }
+
+      /* STEPS ROW */
+      .steps-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 1.5rem;
+      }
+      .step-card {
+        background: var(--gray-100);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+      }
+      .step-num {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--pine-dark);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .step-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+      .step-desc {
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* FAQ */
+      .faq-list {
+        margin-top: 1.5rem;
+      }
+      .faq-item {
+        padding: 1.125rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+      .faq-q {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+      .faq-a {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      /* CONTACT */
+      .contact-block {
+        background: var(--pine-dark);
+        padding: 4rem 3rem;
+      }
+      .contact-inner {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .contact-block h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 30px;
+        font-weight: 400;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+      .contact-block p {
+        font-size: 14px;
+        color: var(--pine-pale);
+        margin-bottom: 2rem;
+        line-height: 1.75;
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .contact-form input,
+      .contact-form select,
+      .contact-form textarea {
+        width: 100%;
+        padding: 11px 14px;
+        font-size: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius-sm);
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+        font-family: "DM Sans", sans-serif;
+        transition: border-color 0.2s;
+      }
+      .contact-form input:focus,
+      .contact-form select:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.35);
+      }
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: var(--pine-pale);
+        opacity: 0.7;
+      }
+      .contact-form select option {
+        background: var(--pine-deep);
+        color: #fff;
+      }
+      .contact-form textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .submit-btn {
+        background: var(--cream);
+        color: var(--pine-dark);
+        font-size: 14px;
+        font-weight: 500;
+        padding: 13px;
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        width: 100%;
+        font-family: "DM Sans", sans-serif;
+        transition: background 0.2s;
+      }
+      .submit-btn:hover {
+        background: var(--cream-dark);
+      }
+      .contact-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .ci-label {
+        font-size: 10px;
+        color: var(--pine-pale);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 5px;
+      }
+      .ci-val {
+        font-size: 14px;
+        color: #fff;
+      }
+
+      /* FOOTER */
+      .footer {
+        background: var(--pine-deep);
+        padding: 2rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+      }
+      .footer-brand svg {
+        width: 24px;
+        height: 24px;
+        opacity: 0.7;
+        flex-shrink: 0;
+      }
+      .footer-brand span {
+        font-size: 12px;
+        color: var(--pine-pale);
+        display: block;
+        margin-top: 2px;
+        font-weight: 400;
+        opacity: 0.75;
+      }
+      .footer-info {
+        font-size: 12px;
+        color: var(--pine-pale);
+        text-align: right;
+        line-height: 1.6;
+        opacity: 0.75;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .nav {
+          padding: 0.75rem 1.5rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          padding: 3rem 1.5rem;
+        }
+        .hero h1 {
+          font-size: 30px;
+        }
+        .section {
+          padding: 2.5rem 1.5rem;
+        }
+        .flow-row {
+          grid-template-columns: 1fr;
+        }
+        .flow-arrow {
+          transform: rotate(90deg);
+          padding: 6px 0;
+        }
+        .stat-row {
+          grid-template-columns: 1fr 1fr;
+        }
+        .trust-row {
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .spec-cards {
+          grid-template-columns: 1fr 1fr;
+        }
+        .steps-row {
+          grid-template-columns: 1fr 1fr;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .contact-info {
+          grid-template-columns: 1fr;
+        }
+        .contact-block {
+          padding: 2.5rem 1.5rem;
+        }
+        .footer {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer-info {
+          text-align: center;
+        }
+        .specialty-bar {
+          padding: 0.75rem 1rem;
+        }
+        .spec-item {
+          padding: 0.4rem 0.75rem;
+        }
+        .cta-strip {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .spec-cards {
+          grid-template-columns: 1fr;
+        }
+        .steps-row {
+          grid-template-columns: 1fr;
+        }
+        .stat-row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ============ ENHANCEMENTS: MOTION & INTERACTIVITY ============ */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Scroll progress bar */
+
+      /* Nav shrink on scroll */
+      .nav {
+        transition:
+          padding 0.3s ease,
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .nav.scrolled {
+        padding-top: 0.55rem;
+        padding-bottom: 0.55rem;
+        background: rgba(14, 85, 96, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.4);
+      }
+      /* Animated underline on nav links */
+      .nav-links a {
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        height: 2px;
+        width: 0;
+        background: var(--brass-light);
+        transition: width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+
+      /* Button micro-interactions + ripple */
+      .nav-cta,
+      .btn-cream,
+      .btn-outline,
+      .submit-btn,
+      .cta-strip-btn {
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.25s ease,
+          background 0.2s ease;
+      }
+      .nav-cta:hover,
+      .btn-cream:hover,
+      .submit-btn:hover,
+      .cta-strip-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.3);
+      }
+      .nav-cta:active,
+      .btn-cream:active,
+      .btn-outline:active,
+      .submit-btn:active,
+      .cta-strip-btn:active {
+        transform: translateY(0) scale(0.98);
+      }
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0);
+        background: rgba(14, 85, 96, 0.25);
+        animation: ripple-go 0.6s ease-out;
+        pointer-events: none;
+      }
+      @keyframes ripple-go {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+
+      /* Hero entrance */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero .hero-badge {
+        animation: fadeUp 0.7s ease both 0.12s;
+      }
+      .hero h1 {
+        animation: fadeUp 0.8s ease both 0.28s;
+      }
+      .hero > p {
+        animation: fadeUp 0.8s ease both 0.44s;
+      }
+      .hero .hero-btns {
+        animation: fadeUp 0.8s ease both 0.6s;
+      }
+
+      /* Scroll-reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(34px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Card hover lifts */
+      .stat-card {
+        transition:
+          transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.3s ease;
+      }
+      .stat-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 32px -18px rgba(14, 85, 96, 0.4);
+      }
+      .why-card {
+        transition:
+          transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.3s ease;
+      }
+      .why-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 30px -18px rgba(14, 85, 96, 0.4);
+      }
+      .spec-card {
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .spec-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px -18px rgba(14, 85, 96, 0.35);
+      }
+      .step-card {
+        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .step-card:hover {
+        transform: translateY(-5px);
+      }
+      .spec-item {
+        transition: transform 0.3s ease;
+      }
+      .spec-item:hover {
+        transform: translateY(-4px);
+      }
+      .spec-item:hover .spec-dot {
+        transform: scale(1.5);
+      }
+      .spec-dot {
+        transition: transform 0.3s ease;
+      }
+
+      /* FAQ accordion (upgrade static FAQ to collapsible) */
+      .faq-q {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        padding-right: 2.25rem;
+        position: relative;
+        transition: color 0.2s ease;
+      }
+      .faq-q:hover {
+        color: var(--pine-mid);
+      }
+      .faq-q::after {
+        content: "+";
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 20px;
+        color: var(--pine-mid);
+        transition: transform 0.3s ease;
+        line-height: 1;
+      }
+      .faq-item.open .faq-q::after {
+        transform: rotate(45deg);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        margin-bottom: 0;
+      }
+      .faq-item.open .faq-a {
+        margin-top: 6px;
+      }
+
+      /* Back-to-top button */
+      .to-top {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--pine);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 22px -8px rgba(14, 85, 96, 0.7);
+        z-index: 150;
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.4),
+          background 0.2s ease;
+      }
+      .to-top.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+      .to-top:hover {
+        background: var(--pine-dark);
+        transform: translateY(-3px) scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav">
+      <a href="home.html" class="nav-brand">
+        <svg
+          viewBox="0 0 64 64"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="Brain Fit"
+        >
+          <polygon
+            points="32,8 54.83,24.59 46.11,51.41 17.89,51.41 9.17,24.59"
+            fill="none"
+            stroke="#fff"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+            opacity="0.5"
+          />
+          <circle cx="32" cy="8" r="6" fill="#fff" />
+          <circle cx="54.83" cy="24.59" r="6" fill="#fff" />
+          <circle cx="46.11" cy="51.41" r="6" fill="#fff" />
+          <circle cx="17.89" cy="51.41" r="6" fill="#fff" />
+          <circle cx="9.17" cy="24.59" r="6" fill="#fff" />
+        </svg>
+        <div>
+          <div class="nav-brand-text">Brain Fit</div>
+          <div class="nav-brand-desc">MULTI-SPECIALTY NETWORK</div>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="./Home.html">Home</a>
+        <a href="./About.html">About</a>
+        <a href="./Veterans_CP.html" class="active">Veterans &amp; C&amp;P</a>
+        <a href="./Partner_and_Network.html">Provider network</a>
+        <a href="./Contracting.html">Contracting</a>
+        <a href="./Contact.html">Contact</a>
+      </div>
+      <a href="#contact" class="nav-cta">Apply to the team</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">Join the Brain Fit Team</div>
+      <h1>
+        Become part of a multi-specialty federal evaluation provider network
+      </h1>
+      <p>
+        Brain Fit is a federally registered provider network with active
+        multi-state coverage and an integrated clinical ecosystem. We are
+        actively recruiting licensed clinicians across five specialties to
+        deliver federal-grade evaluation work — on your schedule, fully
+        supported by our team.
+      </p>
+      <div class="hero-btns">
+        <button
+          class="btn-cream"
+          onclick="
+            document
+              .getElementById('contact')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          Apply to the team
+        </button>
+        <button
+          class="btn-outline"
+          onclick="
+            document
+              .getElementById('how')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          How it works
+        </button>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <div class="trust-row">
+        <div class="trust-item">
+          <div class="trust-label">Federal Registration</div>
+          <div class="trust-val">SAM.gov Active</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-label">Compliance</div>
+          <div class="trust-val">HIPAA &middot; 42 CFR Part 2</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-label">Clinical Leadership</div>
+          <div class="trust-val">10+ Years Federal Evaluation</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-label">Treatment Affiliate</div>
+          <div class="trust-val">Joint Commission Gold Seal</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECIALTY BAR -->
+    <div class="specialty-bar">
+      <div class="spec-item">
+        <div class="spec-dot" style="background: var(--spec-psych)"></div>
+        <div class="spec-name">Psychology</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-dot" style="background: var(--spec-dent)"></div>
+        <div class="spec-name">Dentistry</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-dot" style="background: var(--spec-audio)"></div>
+        <div class="spec-name">Audiology</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-dot" style="background: var(--spec-optom)"></div>
+        <div class="spec-name">Optometry</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-dot" style="background: var(--spec-med)"></div>
+        <div class="spec-name">Medical</div>
+      </div>
+    </div>
+
+    <!-- WHO WE ARE -->
+    <section class="section" style="background: #fff" id="who">
+      <div class="section-inner">
+        <div class="section-label">Who we are</div>
+        <h2>
+          One team. Five specialties. A complete clinical ecosystem behind every
+          evaluation.
+        </h2>
+        <p>
+          Brain Fit, LLC is a multi-specialty provider network and federal
+          evaluation contractor headquartered in Phoenix, Arizona. Co-owned by
+          two licensed clinical psychologists with 10+ years of federal-grade
+          disability evaluation experience, the firm credentials, coordinates,
+          and manages a multi-disciplinary licensed provider network — handling
+          the administrative, credentialing, and coordination work so our team
+          members can focus entirely on the clinical evaluation.
+        </p>
+        <p>
+          The Brain Fit Team operates within an integrated clinical ecosystem
+          that includes Trinity Tree, LLC (a multi-PsyD outpatient evaluation
+          and training practice) and Desert Recovery Centers (a Joint Commission
+          Gold Seal accredited residential and step-down treatment system). When
+          you join Brain Fit, you become part of a clinical infrastructure that
+          is substantially larger and more accountable than a typical evaluation
+          network.
+        </p>
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-num">5</div>
+            <div class="stat-lbl">Clinical specialties</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">21</div>
+            <div class="stat-lbl">Active credentialed providers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">10</div>
+            <div class="stat-lbl">States with active coverage</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">40+</div>
+            <div class="stat-lbl">PSYPACT telehealth states</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- HOW IT WORKS -->
+    <section class="section" style="background: #fff" id="how">
+      <div class="section-inner">
+        <div class="section-label">How it works</div>
+        <h2>Where the Brain Fit Team fits in</h2>
+        <p>
+          Brain Fit sits between federal and state evaluation contracts and
+          credentialed clinicians. We coordinate the operational layer; you
+          deliver the clinical work.
+        </p>
+        <div class="flow-row">
+          <div class="flow-box">
+            <div class="flow-title">Federal &amp; state contracts</div>
+            <div class="flow-sub">
+              Veteran C&amp;P, SSA disability consultative exams,
+              fitness-for-duty, and specialty evaluation contracts
+            </div>
+          </div>
+          <div class="flow-arrow">&#8594;</div>
+          <div class="flow-box highlight">
+            <div class="flow-title brass">Brain Fit Team</div>
+            <div class="flow-sub brass">
+              Receives the referral, matches it to the right credentialed team
+              member, and handles all coordination, scheduling, and compliance
+            </div>
+          </div>
+          <div class="flow-arrow">&#8594;</div>
+          <div class="flow-box">
+            <div class="flow-title">You</div>
+            <div class="flow-sub">
+              Complete the evaluation. Submit your report. Get paid.
+            </div>
+          </div>
+        </div>
+        <p class="flow-note">
+          Brain Fit handles credentialing, scheduling, compliance, and reporting
+          coordination — you focus on the clinical work.
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- WHY JOIN -->
+    <section class="section" style="background: var(--gray-50)" id="join">
+      <div class="section-inner">
+        <div class="section-label">Why join the Brain Fit Team</div>
+        <h2>What you gain as a team member</h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-title">Steady referral pipeline</div>
+            <div class="why-desc">
+              Brain Fit holds active federal and state evaluation contracts and
+              pursues additional contracting pipelines across VA, SSA, and
+              fitness-for-duty work. Team members gain access to evaluation work
+              without sourcing their own contracts.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Full administrative support</div>
+            <div class="why-desc">
+              Credentialing, scheduling, compliance, and reporting coordination
+              are managed by the Brain Fit Team. You focus on the clinical
+              evaluation; we handle the administrative burden around it.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Flexible engagement</div>
+            <div class="why-desc">
+              Work evaluations around your existing practice. There is no
+              minimum volume requirement to join the team. You set your
+              availability and Brain Fit matches referrals to your schedule.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Meaningful clinical impact</div>
+            <div class="why-desc">
+              Federal evaluations directly impact access to disability benefits,
+              healthcare, and long-term support for veterans and disabled
+              populations. Your work as a team member makes a real difference.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Competitive compensation</div>
+            <div class="why-desc">
+              Team members are compensated competitively on a per-evaluation
+              basis. Brain Fit is transparent about rates and payment timelines
+              from the start of the relationship.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Supported onboarding</div>
+            <div class="why-desc">
+              New team members receive orientation on federal evaluation
+              protocols, DBQ and report formatting standards, and Brain Fit
+              quality expectations so you feel confident before your first
+              evaluation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- SPECIALTIES -->
+    <section class="section" style="background: #fff" id="specialties">
+      <div class="section-inner">
+        <div class="section-label">Who we are recruiting</div>
+        <h2>Specialties currently joining the team</h2>
+        <p>
+          We are actively recruiting licensed and credentialed clinicians across
+          all five disciplines. All states considered.
+        </p>
+        <div class="spec-cards">
+          <div class="spec-card">
+            <div class="spec-card-head">
+              <div
+                class="spec-dot-lg"
+                style="background: var(--spec-psych)"
+              ></div>
+              <div class="spec-card-title">Psychology</div>
+            </div>
+            <ul class="spec-card-list">
+              <li>Licensed psychologists (Ph.D. / Psy.D.)</li>
+              <li>PTSD, trauma &amp; MST evaluations</li>
+              <li>TBI cognitive screening</li>
+              <li>Depression, anxiety &amp; personality</li>
+              <li>Substance use &amp; co-occurring disorders</li>
+            </ul>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-head">
+              <div
+                class="spec-dot-lg"
+                style="background: var(--spec-dent)"
+              ></div>
+              <div class="spec-card-title">Dentistry</div>
+            </div>
+            <ul class="spec-card-list">
+              <li>Licensed dentists (D.D.S. / D.M.D.)</li>
+              <li>Oral health disability evaluations</li>
+              <li>Service-connected dental conditions</li>
+              <li>TMJ and jaw disorder assessments</li>
+              <li>Dental DBQ completion</li>
+            </ul>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-head">
+              <div
+                class="spec-dot-lg"
+                style="background: var(--spec-audio)"
+              ></div>
+              <div class="spec-card-title">Audiology</div>
+            </div>
+            <ul class="spec-card-list">
+              <li>Licensed audiologists (Au.D. / Ph.D.)</li>
+              <li>Hearing loss evaluations</li>
+              <li>Tinnitus assessments</li>
+              <li>Audiometric testing &amp; DBQs</li>
+              <li>Noise-induced hearing disability</li>
+            </ul>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-head">
+              <div
+                class="spec-dot-lg"
+                style="background: var(--spec-optom)"
+              ></div>
+              <div class="spec-card-title">Optometry</div>
+            </div>
+            <ul class="spec-card-list">
+              <li>Licensed optometrists (O.D.)</li>
+              <li>Vision disability evaluations</li>
+              <li>Service-connected eye conditions</li>
+              <li>Visual acuity &amp; field testing</li>
+              <li>Optometry DBQ completion</li>
+            </ul>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-head">
+              <div
+                class="spec-dot-lg"
+                style="background: var(--spec-med)"
+              ></div>
+              <div class="spec-card-title">Medical</div>
+            </div>
+            <ul class="spec-card-list">
+              <li>Physicians (M.D. / D.O.), NPs, PAs</li>
+              <li>General medical evaluations</li>
+              <li>Musculoskeletal evaluations</li>
+              <li>Chronic condition assessments</li>
+              <li>Multi-system disability reviews</li>
+            </ul>
+          </div>
+          <div class="spec-card muted">
+            <div class="spec-card-head">
+              <div
+                class="spec-dot-lg"
+                style="background: var(--text-muted)"
+              ></div>
+              <div class="spec-card-title">All specialties</div>
+            </div>
+            <ul class="spec-card-list">
+              <li>Active state licensure required</li>
+              <li>All states considered</li>
+              <li>In-person or telehealth options</li>
+              <li>Evaluation protocol training provided</li>
+              <li>No minimum volume required</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cta-strip">
+          <div>
+            <div class="cta-strip-text">Ready to join the Brain Fit Team?</div>
+            <div class="cta-strip-sub">
+              Fill out the form below and a team member will reach out within
+              one business day.
+            </div>
+          </div>
+          <button
+            class="cta-strip-btn"
+            onclick="
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Apply now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ONBOARDING STEPS -->
+    <section class="section" style="background: var(--gray-50)">
+      <div class="section-inner">
+        <div class="section-label">Team onboarding</div>
+        <h2>What happens after you apply</h2>
+        <div class="steps-row">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-title">Application &amp; intake</div>
+            <div class="step-desc">
+              Submit your interest via the form below. Our team reviews your
+              credentials, licensure, and specialty to confirm fit with current
+              network needs.
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-title">Credentialing</div>
+            <div class="step-desc">
+              Brain Fit manages the credentialing process. We guide you through
+              every step and handle the paperwork required to bring you onto the
+              team.
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-title">Orientation</div>
+            <div class="step-desc">
+              You receive onboarding on federal evaluation protocols, DBQ and
+              report formatting standards, and Brain Fit quality expectations
+              before your first evaluation.
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-title">Start receiving referrals</div>
+            <div class="step-desc">
+              Once credentialed and oriented, Brain Fit begins routing
+              evaluation referrals to you based on your specialty, location, and
+              availability.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- FAQ -->
+    <section class="section" style="background: #fff">
+      <div class="section-inner">
+        <div class="section-label">Common questions</div>
+        <h2>Frequently asked by prospective team members</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q">
+              How does the Brain Fit referral model work?
+            </button>
+            <div class="faq-a">
+              Brain Fit holds federal and state evaluation contracts and
+              partners with downstream contracting agencies. When a referral
+              comes in, we match it to the credentialed team member best suited
+              by specialty, location, and availability. You complete the
+              evaluation; Brain Fit handles all administrative coordination.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Do I need prior federal evaluation experience to join?
+            </button>
+            <div class="faq-a">
+              Not necessarily. Brain Fit provides orientation and training on
+              federal evaluation protocols, DBQ formatting, and reporting
+              standards. Active licensure in your specialty and a genuine
+              interest in serving veteran and disability populations are the
+              core requirements.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Can I do this alongside my existing practice?
+            </button>
+            <div class="faq-a">
+              Yes. Most of our team members complete evaluations as a supplement
+              to their existing clinical work. There is no minimum volume
+              requirement and you control your own availability from the start.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Are telehealth evaluations available?</button>
+            <div class="faq-a">
+              For certain evaluation types, yes. Federal agencies have expanded
+              telehealth options for some evaluation categories. Brain Fit will
+              clarify which formats apply to your specialty during the
+              onboarding conversation. Several of our team's psychologists hold
+              PSYPACT authorization, extending telehealth coverage to 40+
+              states.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What states do you operate in?</button>
+            <div class="faq-a">
+              Brain Fit considers clinicians licensed in any U.S. state. Our
+              team is currently active across Arizona, California, Colorado,
+              Florida, Idaho, New Jersey, New York, Pennsylvania, Texas, and
+              Washington, and we welcome team members regardless of geography.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How does compensation work?</button>
+            <div class="faq-a">
+              Team members are compensated on a per-evaluation basis. Rates are
+              discussed transparently during the onboarding process and are
+              competitive with industry standards for federal evaluation work.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              What does being part of the Brain Fit Team look like day-to-day?
+            </button>
+            <div class="faq-a">
+              As a team member, you receive evaluation assignments matched to
+              your schedule and specialty, complete them on your own time, and
+              submit reports through our coordination workflow. There is no
+              minimum quota and no overhead burden — Brain Fit's administrative
+              team handles credentialing, scheduling, billing, and compliance so
+              you can focus on the clinical work.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / APPLICATION FORM -->
+    <section class="contact-block" id="contact">
+      <div class="contact-inner">
+        <h2>Apply to join the Brain Fit Team</h2>
+        <p>
+          Licensed in psychology, dentistry, audiology, optometry, or medicine?
+          Fill out the form below and a member of the Brain Fit Team will follow
+          up within one business day to discuss next steps.
+        </p>
+        <div class="contact-form">
+          <div class="form-row">
+            <input type="text" id="v-name" placeholder="Full name" />
+            <input
+              type="text"
+              id="v-credentials"
+              placeholder="Credentials (e.g. Psy.D., M.D., Au.D.)"
+            />
+          </div>
+          <div class="form-row">
+            <input type="email" id="v-email" placeholder="Email address" />
+            <input type="tel" id="v-phone" placeholder="Phone number" />
+          </div>
+          <div class="form-row">
+            <select id="v-specialty">
+              <option value="" disabled selected>Clinical specialty</option>
+              <option>Psychology</option>
+              <option>Dentistry</option>
+              <option>Audiology</option>
+              <option>Optometry</option>
+              <option>Medical (M.D. / D.O. / NP / PA)</option>
+            </select>
+            <select id="v-state">
+              <option value="" disabled selected>State(s) licensed in</option>
+              <option>Arizona</option>
+              <option>California</option>
+              <option>Colorado</option>
+              <option>Florida</option>
+              <option>Idaho</option>
+              <option>New Jersey</option>
+              <option>New York</option>
+              <option>Pennsylvania</option>
+              <option>Texas</option>
+              <option>Washington</option>
+              <option>Multiple states</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <select id="v-experience">
+            <option value="" disabled selected>
+              Prior federal evaluation experience?
+            </option>
+            <option>Yes — I have completed C&amp;P evaluations before</option>
+            <option>
+              Yes — I have completed SSA disability or fitness-for-duty
+              evaluations
+            </option>
+            <option>No — but I am interested in learning</option>
+          </select>
+          <textarea
+            id="v-message"
+            placeholder="Tell us about your practice, availability, or any questions you have..."
+          ></textarea>
+          <button class="submit-btn" id="submitBtn" type="button">
+            Submit application
+          </button>
+        </div>
+        <div
+          id="formSuccess"
+          style="
+            display: none;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 1rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+          "
+        >
+          <div style="margin-bottom: 1rem">
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="28"
+                cy="28"
+                r="26"
+                stroke="#2D8898"
+                stroke-width="2.5"
+                fill="none"
+              />
+              <path
+                d="M17 28.5L24 36L39 21"
+                stroke="#2D8898"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div
+            style="
+              font-family: &quot;DM Serif Display&quot;, serif;
+              font-size: 24px;
+              color: #1a2e35;
+              margin-bottom: 0.75rem;
+              font-weight: 600;
+            "
+          >
+            Application received — thank you!
+          </div>
+          <div
+            style="
+              font-size: 15px;
+              color: #6b7280;
+              max-width: 320px;
+              margin: 0 auto;
+              line-height: 1.6;
+            "
+          >
+            A member of our team will follow up within one business day. If not,
+            please contact the number or email directly given below.
+          </div>
+        </div>
+        <div class="contact-info">
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">jshelton@brainfitteam.com</div>
+          </div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-val">(623) 688-8598</div>
+          </div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val">www.brainfitteam.com</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-brand">
+        <svg
+          viewBox="0 0 64 64"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <polygon
+            points="32,8 54.83,24.59 46.11,51.41 17.89,51.41 9.17,24.59"
+            fill="none"
+            stroke="#fff"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+            opacity="0.5"
+          />
+          <circle cx="32" cy="8" r="6" fill="#fff" />
+          <circle cx="54.83" cy="24.59" r="6" fill="#fff" />
+          <circle cx="46.11" cy="51.41" r="6" fill="#fff" />
+          <circle cx="17.89" cy="51.41" r="6" fill="#fff" />
+          <circle cx="9.17" cy="24.59" r="6" fill="#fff" />
+        </svg>
+        <div>
+          Brain Fit, LLC
+          <span
+            >UEI: CD9AXM3DP9N3 &nbsp;|&nbsp; NAICS: 541611, 541612, 621111,
+            621210, 621320, 621330, 621340, 621420 &nbsp;|&nbsp; SAM.gov
+            Active</span
+          >
+        </div>
+      </div>
+      <div class="footer-info">
+        &copy; 2026 Brain Fit, LLC. All rights reserved.<br />
+        HIPAA &amp; 42 CFR Part 2 Compliant
+      </div>
+    </footer>
+
+    <!-- FIXED UI ELEMENTS -->
+    <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+    <script>
+      (function () {
+        var nav = document.querySelector(".nav");
+        var toTop = document.getElementById("toTop");
+        function onScroll() {
+          var st = window.scrollY || document.documentElement.scrollTop;
+          nav.classList.toggle("scrolled", st > 30);
+          toTop.classList.toggle("show", st > 600);
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        toTop.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Scroll-reveal
+        var reveals = document.querySelectorAll(
+          ".section-inner, .stat-card, .why-card, .spec-card, .step-card",
+        );
+        reveals.forEach(function (el) {
+          el.classList.add("reveal");
+        });
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  e.target.classList.add("in-view");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.12 },
+          );
+          reveals.forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          reveals.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+        }
+
+        // Animated counters on stat numbers
+        function animateCount(el) {
+          var raw = el.textContent.trim();
+          var m = raw.match(/^(\d+)/);
+          if (!m) return;
+          var target = parseInt(m[1], 10);
+          var suffix = raw.replace(m[1], "");
+          var dur = 1200,
+            start = null;
+          function step(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / dur, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(eased * target) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+        if ("IntersectionObserver" in window) {
+          var co = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  animateCount(e.target);
+                  co.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.6 },
+          );
+          document.querySelectorAll(".stat-num").forEach(function (el) {
+            co.observe(el);
+          });
+        }
+
+        // FAQ accordion
+        document.querySelectorAll(".faq-q").forEach(function (q) {
+          q.addEventListener("click", function () {
+            var item = q.parentElement;
+            var ans = q.nextElementSibling;
+            var isOpen = item.classList.contains("open");
+            document.querySelectorAll(".faq-item").forEach(function (i) {
+              i.classList.remove("open");
+              var a = i.querySelector(".faq-a");
+              if (a) a.style.maxHeight = null;
+            });
+            if (!isOpen) {
+              item.classList.add("open");
+              ans.style.maxHeight = ans.scrollHeight + "px";
+            }
+          });
+        });
+
+        // Button ripple
+        document
+          .querySelectorAll(
+            ".nav-cta, .btn-cream, .btn-outline, .submit-btn, .cta-strip-btn",
+          )
+          .forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
+              var rect = btn.getBoundingClientRect();
+              var r = document.createElement("span");
+              r.className = "ripple";
+              var size = Math.max(rect.width, rect.height);
+              r.style.width = r.style.height = size + "px";
+              r.style.left = e.clientX - rect.left - size / 2 + "px";
+              r.style.top = e.clientY - rect.top - size / 2 + "px";
+              btn.appendChild(r);
+              setTimeout(function () {
+                r.remove();
+              }, 600);
+            });
+          });
+
+        // Contact form -> inline success
+
+        var submitBtn = document.getElementById("submitBtn");
+        if (submitBtn) {
+          submitBtn.addEventListener("click", async function () {
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+            const data = {
+              sheet: "Veterans_CP",
+              name: document.getElementById("v-name").value,
+              credentials: document.getElementById("v-credentials").value,
+              email: document.getElementById("v-email").value,
+              phone: document.getElementById("v-phone").value,
+              specialty: document.getElementById("v-specialty").value,
+              state: document.getElementById("v-state").value,
+              experience: document.getElementById("v-experience").value,
+              message: document.getElementById("v-message").value,
+            };
+            try {
+              await fetch(
+                "https://script.google.com/macros/s/AKfycbwb_DgVLI0vLNcyp-dChkzvKmLfx1iEA25eo7HTDyKmQ20afq-9vPWknDmlDY8P1Bs-/exec",
+                {
+                  method: "POST",
+                  mode: "no-cors",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              );
+              var form = document.querySelector(".contact-form");
+              var success = document.getElementById("formSuccess");
+              form.style.transition = "opacity 0.3s";
+              form.style.opacity = "0";
+              setTimeout(() => {
+                form.style.display = "none";
+                success.style.display = "block";
+              }, 300);
+            } catch (error) {
+              alert("Failed to submit. Please try again.");
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit application";
+            }
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
